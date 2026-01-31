@@ -15,8 +15,8 @@ const Contact = () => {
         {
             icon: <Mail className="w-6 h-6" />,
             title: "Correo Electrónico",
-            value: "contacto@mixtecai.com",
-            href: "mailto:contacto@mixtecai.com",
+            value: "hendrikuwabara@gmail.com",
+            href: "mailto:hendrikuwabara@gmail.com",
             color: "from-primary to-primary-dark"
         },
         {
@@ -30,7 +30,7 @@ const Contact = () => {
             icon: <MapPin className="w-6 h-6" />,
             title: "Ubicación",
             value: "Huajuapan de León, Santa Teresa, Oaxaca",
-            href: "#",
+            href: "https://maps.app.goo.gl/GBZAKSL58avatS9a9",
             color: "from-cta to-accent-purple"
         },
     ];
