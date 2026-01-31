@@ -1,10 +1,7 @@
-import { Quote, Star, TrendingUp, Users, Award } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Testimonials = () => {
-    const stats = [
-
-    ];
 
     return (
         <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
@@ -117,27 +114,7 @@ const Testimonials = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                         >
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="text-center"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <motion.div
-                                        className="flex justify-center mb-2 text-primary"
-                                        whileHover={{ scale: 1.2, rotate: 10 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        {stat.icon}
-                                    </motion.div>
-                                    <div className="text-2xl font-black gradient-text">{stat.value}</div>
-                                    <div className="text-xs text-secondary-muted mt-1">{stat.label}</div>
-                                </motion.div>
-                            ))}
+
                         </motion.div>
                     </motion.div>
 
