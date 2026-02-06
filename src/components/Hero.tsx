@@ -86,7 +86,7 @@ const Hero = () => {
             />
 
             <div className="max-w-7xl mx-auto w-full relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     {/* Left Content */}
                     <div className="max-w-3xl">
                         {/* Badge */}
@@ -230,7 +230,7 @@ const Hero = () => {
                         initial={{ opacity: 0, x: 100, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.3 }}
-                        className="hidden lg:flex justify-center items-center w-full h-full"
+                        className="hidden lg:flex justify-center w-full mt-24"
                     >
                         <MixtecGrecaAnimation />
                     </motion.div>
