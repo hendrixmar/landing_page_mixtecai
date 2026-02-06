@@ -150,7 +150,7 @@ const Hero = () => {
                             <p className="text-lg md:text-2xl text-secondary-muted max-w-2xl font-light leading-relaxed italic border-l-4 border-primary pl-6 py-2">
                                 "En el corazón de la Mixteca, un artesano no solo crea un objeto; cuenta una historia con sus manos. Hoy, el mundo ha cambiado, y las herramientas también.
                                 <span className="text-white font-medium block mt-4">
-                                    Ya no solo tejemos palma o tallamos madera; ahora tejemos algoritmos y tallamos código."
+                                    Ya no solo tejemos palma o tallamos madera; ahora tejemos algoritmos y le damos forma al código."
                                 </span>
                             </p>
                         </motion.div>
