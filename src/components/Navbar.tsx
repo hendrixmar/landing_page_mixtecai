@@ -52,7 +52,7 @@ const Navbar = () => {
             >
                 {/* Progress Bar */}
                 <motion.div
-                    className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-cta to-accent-purple"
+                    className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-cta to-accent-magenta"
                     style={{ width: progressWidth }}
                 />
 
@@ -67,27 +67,32 @@ const Navbar = () => {
                         <div className="relative">
                             {/* Glow effect */}
                             <motion.div
-                                className="absolute -inset-2 bg-primary rounded-full blur-md"
+                                className="absolute -inset-2 bg-primary/30 rounded-xl blur-lg"
                                 animate={{
-                                    opacity: [0.3, 0.6, 0.3],
+                                    opacity: [0.2, 0.5, 0.2],
                                     scale: [1, 1.1, 1],
                                 }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             />
-                            <img
-                                src="/logo.jpg"
-                                alt="mixtecAI Logo"
-                                className="relative w-10 h-10 rounded-full border-2 border-primary object-cover"
-                            />
+
+                            {/* Logo Image */}
+                            <div className="relative w-11 h-11 rounded-xl bg-white overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,174,239,0.6)]">
+                                <img
+                                    src="/logos.jpg"
+                                    alt="Artesanos Digitales"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+
                             {/* Status indicator */}
                             <motion.div
-                                className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-background"
+                                className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background z-10"
                                 animate={{ scale: [1, 1.2, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                             />
                         </div>
-                        <span className="text-2xl font-black tracking-tighter text-white">
-                            mixtec<span className="text-primary">AI</span>
+                        <span className="text-xl md:text-2xl font-black tracking-tighter text-white">
+                            Artesanos <span className="text-primary">Digitales</span>
                         </span>
                     </motion.a>
 
@@ -98,8 +103,8 @@ const Navbar = () => {
                                 key={link.name}
                                 href={link.href}
                                 className={`relative px-4 py-2 font-medium transition-colors duration-200 uppercase tracking-widest text-sm rounded-lg group ${activeSection === link.id
-                                        ? 'text-primary'
-                                        : 'text-secondary-muted hover:text-white'
+                                    ? 'text-primary'
+                                    : 'text-secondary-muted hover:text-white'
                                     }`}
                                 whileHover={{ y: -2 }}
                                 whileTap={{ y: 0 }}
@@ -130,7 +135,7 @@ const Navbar = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent-purple rounded-lg blur opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent-magenta rounded-lg blur opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
                             <div
                                 className="relative bg-primary text-white px-6 py-2.5 font-bold text-sm uppercase tracking-wider flex items-center gap-2 overflow-hidden"
                                 style={{ clipPath: 'polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)' }}
@@ -199,8 +204,8 @@ const Navbar = () => {
                                         exit={{ opacity: 0, x: -20 }}
                                         transition={{ delay: index * 0.1 }}
                                         className={`text-lg font-bold uppercase tracking-wider py-3 px-4 rounded-lg transition-colors ${activeSection === link.id
-                                                ? 'text-primary bg-primary/10'
-                                                : 'text-secondary hover:text-white hover:bg-white/5'
+                                            ? 'text-primary bg-primary/10'
+                                            : 'text-secondary hover:text-white hover:bg-white/5'
                                             }`}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >

@@ -1,17 +1,18 @@
-import { Code, Cpu, ShoppingCart, ShieldCheck, Smartphone, Zap, ArrowUpRight } from 'lucide-react';
+import { HandHeart, Cpu, Fingerprint, ArrowUpRight } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
 
-interface ServiceCardProps {
-    service: {
+interface DifferentialCardProps {
+    item: {
         icon: React.ReactNode;
         title: string;
         description: string;
+        color: string;
     };
     index: number;
 }
 
-const ServiceCard = ({ service, index }: ServiceCardProps) => {
+const DifferentialCard = ({ item, index }: DifferentialCardProps) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -20,11 +21,11 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
     const mouseY = useMotionValue(0);
 
     // Smooth spring animation for the tilt
-    const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), {
+    const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), {
         stiffness: 300,
         damping: 30
     });
-    const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), {
+    const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
         stiffness: 300,
         damping: 30
     });
@@ -62,87 +63,37 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
             className="group relative h-full"
         >
             {/* Card Background with Gradient Border */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent-purple/20 to-cta/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+            <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`} />
 
-            <div className="relative h-full p-8 bg-surface/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-primary/30 group-hover:bg-surface-elevated/80">
-                {/* Shimmer Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            <div className="relative h-full p-10 bg-surface/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden transition-all duration-500 group-hover:border-primary/30 group-hover:bg-surface-elevated/80 flex flex-col">
+
+                {/* Icon Container */}
+                <div className="mb-6 relative">
+                    <motion.div
+                        className="p-4 bg-background border border-white/10 rounded-2xl shadow-lg inline-block relative overflow-hidden"
+                        whileHover={{ scale: 1.1 }}
+                    >
+                        <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${item.color}`} />
+                        <div className="relative z-10 text-white">
+                            {item.icon}
+                        </div>
+                    </motion.div>
                 </div>
 
-                {/* Animated Corner Accent */}
-                <motion.div
-                    className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-2xl"
-                    animate={isHovered ? {
-                        scale: [1, 1.5, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                    } : {}}
-                    transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
-                />
-
-                {/* Icon Container with 3D Effect */}
-                <motion.div
-                    className="relative mb-6 inline-block"
-                    style={{ transform: "translateZ(40px)" }}
-                >
-                    <motion.div
-                        className="p-4 bg-background border border-white/10 rounded-xl shadow-lg relative overflow-hidden"
-                        whileHover={{
-                            boxShadow: "0 0 30px rgba(233, 30, 99, 0.4)",
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        {/* Icon Glow */}
-                        <motion.div
-                            className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            animate={isHovered ? {
-                                scale: [1, 1.2, 1],
-                            } : {}}
-                            transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
-                        />
-                        <motion.div
-                            className="relative z-10 text-cta"
-                            animate={isHovered ? {
-                                scale: [1, 1.1, 1],
-                                rotate: [0, 5, -5, 0],
-                            } : {}}
-                            transition={{ duration: 0.5 }}
-                        >
-                            {service.icon}
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
-
-                {/* Content with 3D Effect */}
-                <div style={{ transform: "translateZ(30px)" }}>
-                    <div className="flex items-center gap-2 mb-3">
-                        <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors duration-300">
-                            {service.title}
-                        </h3>
-                        <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <ArrowUpRight className="w-5 h-5 text-primary" />
-                        </motion.div>
-                    </div>
-                    <p className="text-secondary-muted leading-relaxed font-light">
-                        {service.description}
+                {/* Content */}
+                <div style={{ transform: "translateZ(20px)" }} className="flex-grow">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
+                        {item.title}
+                    </h3>
+                    <p className="text-lg text-secondary-muted leading-relaxed font-light">
+                        {item.description}
                     </p>
                 </div>
 
-                {/* Bottom Accent Line */}
-                <motion.div
-                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary via-cta to-accent-purple"
-                    initial={{ width: "0%" }}
-                    animate={{ width: isHovered ? "100%" : "0%" }}
-                    transition={{ duration: 0.4 }}
-                />
-
-                {/* Index Number */}
-                <div className="absolute top-4 right-4 text-6xl font-black text-white/5 select-none pointer-events-none">
-                    0{index + 1}
+                {/* Bottom Accent */}
+                <div className="mt-8 flex items-center gap-2 text-sm font-mono text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <span>Saber más</span>
+                    <ArrowUpRight size={16} />
                 </div>
             </div>
         </motion.div>
@@ -150,36 +101,24 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 };
 
 const Features = () => {
-    const services = [
+    const differentials = [
         {
-            icon: <Cpu size={32} />,
-            title: 'Automatización con IA',
-            description: 'Implementamos inteligencia artificial para optimizar tus procesos, ahorrar tiempo y reducir costos operativos.',
+            icon: <Fingerprint size={40} />,
+            title: 'Identidad y Raíz',
+            description: 'Llevamos el nombre de nuestra tierra con orgullo, demostrando que desde la Mixteca se exporta inteligencia al mundo.',
+            color: "from-primary via-primary-light to-transparent"
         },
         {
-            icon: <Code size={32} />,
-            title: 'Desarrollo a Medida',
-            description: 'Software diseñado específicamente para las necesidades únicas de tu negocio. Sin funcionalidades innecesarias.',
+            icon: <Cpu size={40} />,
+            title: 'Curaduría Tecnológica',
+            description: 'A diferencia de las grandes consultoras, nosotros no limitamos tu negocio a que se sujete al software que ofrecen, sino que ponemos el software al servicio de tu negocio.',
+            color: "from-cta via-cta-light to-transparent"
         },
         {
-            icon: <Smartphone size={32} />,
-            title: 'Digitalización de Procesos',
-            description: 'Auditoría de cuellos de botella y desarrollo de software a medida.',
-        },
-        {
-            icon: <ShoppingCart size={32} />,
-            title: 'Gestión de Inventarios',
-            description: 'Control total de insumos, transformación de materia prima y alertas de caducidad para evitar pérdidas.',
-        },
-        {
-            icon: <ShieldCheck size={32} />,
-            title: 'Ciberseguridad',
-            description: 'Protegemos la información de tu negocio y tus clientes con estándares de seguridad internacionales.',
-        },
-        {
-            icon: <Zap size={32} />,
-            title: 'Modernización Digital',
-            description: 'Actualizamos tus sistemas antiguos a tecnologías modernas en la nube, rápidas y altamente disponibles.',
+            icon: <HandHeart size={40} />,
+            title: 'Impacto Social',
+            description: 'Al contratarnos, no solo obtienes tecnología de punta, sino que impulsas un ecosistema local que impulsa la adopcion tecnologica de la region.',
+            color: "from-accent-magenta via-secondary to-transparent"
         },
     ];
 
@@ -187,8 +126,7 @@ const Features = () => {
         <section id="services" className="py-24 bg-surface relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[150px]" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-[150px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -197,44 +135,26 @@ const Features = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                    className="mb-16 text-center"
+                    transition={{ duration: 0.8 }}
+                    className="mb-20 text-center"
                 >
                     <motion.span
                         className="inline-block text-primary font-mono font-bold tracking-widest uppercase text-sm mb-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
                     >
-                        Nuestra Especialidad
+                        POR QUÉ NOSOTROS
                     </motion.span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-3 mb-6">
-                        SOLUCIONES{" "}
-                        <span className="gradient-text">FUTURISTAS</span>
+                    <h2 className="text-4xl md:text-6xl font-black text-white mt-3 mb-6">
+                        EL <span className="gradient-text">DIFERENCIAL</span>
                     </h2>
-                    <motion.div
-                        className="h-1 w-24 bg-gradient-to-r from-primary via-cta to-accent-purple mx-auto rounded-full"
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                    />
-                    <motion.p
-                        className="mt-6 text-lg text-secondary-muted max-w-2xl mx-auto"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                        Transformamos tu visión en realidad digital con tecnología de vanguardia
-                    </motion.p>
+                    <p className="text-xl text-secondary-muted max-w-2xl mx-auto font-light">
+                        No somos solo desarrolladores. Somos artesanos de la era digital.
+                    </p>
                 </motion.div>
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                        <ServiceCard key={index} service={service} index={index} />
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {differentials.map((item, index) => (
+                        <DifferentialCard key={index} item={item} index={index} />
                     ))}
                 </div>
             </div>

@@ -3,35 +3,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 
 @theme {
-  /* Professional Color Palette - Premium Dark Theme */
-  --color-primary: #E91E63;
-  /* Vibrant Rose - refined from Rosa Mexicano */
-  --color-primary-light: #F48FB1;
-  /* Light pink accent */
-  --color-primary-dark: #C2185B;
-  /* Deep rose for depth */
+  /* Artesanos Digitales - CMYK Logo-Matched Theme */
+  --color-primary: #00AEEF;
+  /* Process Cyan (from logo) */
+  --color-primary-light: #5BC8F5;
+  --color-primary-dark: #0088CC;
 
-  --color-secondary: #E2E8F0;
-  /* Slate 200 - cleaner than stone */
-  --color-secondary-muted: #94A3B8;
-  /* Slate 400 for secondary text */
+  --color-secondary: #EC008C;
+  /* Process Magenta (from logo) */
+  --color-secondary-muted: #E0E0E0;
+  /* Light Gray Text */
 
-  --color-cta: #F59E0B;
-  /* Keep the golden amber - professional gold */
-  --color-cta-light: #FCD34D;
-  /* Light gold for glows */
+  --color-cta: #FFF200;
+  /* Process Yellow (from logo) */
+  --color-cta-light: #FFF866;
 
-  --color-background: #0F0F1A;
-  /* Deep navy-black - more premium */
-  --color-surface: #1A1A2E;
-  /* Dark navy surface */
-  --color-surface-elevated: #252547;
-  /* Elevated surface for cards */
+  --color-background: #0A0A0A;
+  /* Near Black */
+  --color-surface: #111111;
+  /* Dark Grey Surface */
+  --color-surface-elevated: #1A1A1A;
 
-  --color-accent-cyan: #00D4FF;
-  /* Electric cyan for tech feel */
-  --color-accent-purple: #A855F7;
-  /* Purple for gradient variety */
+  --color-accent-cyan: #00AEEF;
+  --color-accent-magenta: #EC008C;
+  /* Matching logo magenta */
+  --color-accent-yellow: #FFF200;
 
   --font-sans: "Exo", sans-serif;
   --font-mono: "Roboto Mono", monospace;
@@ -65,7 +61,9 @@
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
 
@@ -75,12 +73,14 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(233, 30, 99, 0.4), 0 0 40px rgba(233, 30, 99, 0.2);
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(236, 0, 140, 0.4), 0 0 40px rgba(236, 0, 140, 0.2);
     }
 
     50% {
-      box-shadow: 0 0 30px rgba(233, 30, 99, 0.6), 0 0 60px rgba(233, 30, 99, 0.3);
+      box-shadow: 0 0 30px rgba(236, 0, 140, 0.6), 0 0 60px rgba(236, 0, 140, 0.3);
     }
   }
 
@@ -109,7 +109,9 @@
   }
 
   @keyframes bounce-slow {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
 
@@ -148,20 +150,21 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #E91E63, #A855F7);
+    background: linear-gradient(180deg, #00AEEF, #EC008C);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #F48FB1, #C084FC);
+    background: linear-gradient(180deg, #5BC8F5, #F24DAF);
   }
 }
 
 @layer components {
+
   /* Professional gradient text */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #E91E63 0%, #F59E0B 50%, #A855F7 100%);
+    background-image: linear-gradient(135deg, #00AEEF 0%, #FFF200 50%, #EC008C 100%);
     background-size: 200% 200%;
     animation: gradient-shift 5s ease infinite;
   }
@@ -178,11 +181,11 @@
 
   /* Glow effects */
   .glow-primary {
-    box-shadow: 0 0 30px rgba(233, 30, 99, 0.4), 0 0 60px rgba(233, 30, 99, 0.2);
+    box-shadow: 0 0 30px rgba(0, 174, 239, 0.4), 0 0 60px rgba(0, 174, 239, 0.2);
   }
 
   .glow-cta {
-    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4), 0 0 60px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 30px rgba(255, 242, 0, 0.4), 0 0 60px rgba(255, 242, 0, 0.2);
   }
 
   /* Glass morphism */
@@ -215,7 +218,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #E91E63, #F59E0B, #A855F7, #E91E63);
+    background: linear-gradient(135deg, #00AEEF, #FFF200, #EC008C, #00AEEF);
     background-size: 300% 300%;
     animation: gradient-shift 4s ease infinite;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);

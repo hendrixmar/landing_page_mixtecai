@@ -38,8 +38,7 @@ const Hero = () => {
         }
     };
 
-    const titleWords = ["TU", "NEGOCIO,"];
-    const subtitleWords = ["POTENCIADO", "CON", "IA"];
+
 
     return (
         <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 min-h-screen flex items-center bg-background overflow-hidden relative">
@@ -61,7 +60,7 @@ const Hero = () => {
                     scale: [1, 0.9, 1],
                 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-20 right-10 w-96 h-96 bg-accent-purple/10 rounded-full blur-[100px] pointer-events-none"
+                className="absolute bottom-20 right-10 w-96 h-96 bg-accent-magenta/10 rounded-full blur-[100px] pointer-events-none"
             />
             <motion.div
                 animate={{
@@ -83,7 +82,7 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-                className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-purple/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"
+                className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-magenta/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"
             />
 
             <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -103,7 +102,7 @@ const Hero = () => {
                             >
                                 <Sparkles size={16} />
                             </motion.span>
-                            <span>DIGITALIZANDO LA MIXTECA</span>
+                            <span>ARTESANÍA DIGITAL</span>
                         </motion.div>
 
                         {/* Main Title with Word Animation */}
@@ -115,48 +114,46 @@ const Hero = () => {
                         >
                             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter">
                                 <span className="block overflow-hidden">
-                                    {titleWords.map((word, i) => (
-                                        <motion.span
-                                            key={i}
-                                            variants={letterVariants}
-                                            className="inline-block mr-4"
-                                            style={{ display: 'inline-block' }}
-                                        >
-                                            {word}
-                                        </motion.span>
-                                    ))}
+                                    <motion.span
+                                        variants={letterVariants}
+                                        className="inline-block mr-4"
+                                    >
+                                        CREAMOS
+                                    </motion.span>
+                                    <motion.span
+                                        variants={letterVariants}
+                                        className="inline-block mr-4"
+                                    >
+                                        FUTURO
+                                    </motion.span>
                                 </span>
                                 <span className="block overflow-hidden mt-2">
-                                    {subtitleWords.map((word, i) => (
-                                        <motion.span
-                                            key={i}
-                                            variants={letterVariants}
-                                            className="inline-block mr-4 gradient-text"
-                                            style={{ display: 'inline-block' }}
-                                        >
-                                            {word}
-                                        </motion.span>
-                                    ))}
+                                    <motion.span
+                                        variants={letterVariants}
+                                        className="inline-block mr-4 gradient-text"
+                                    >
+                                        DIGITAL
+                                    </motion.span>
                                 </span>
                             </h1>
                         </motion.div>
 
                         {/* Description */}
-                        <motion.p
+                        {/* Description - El Gancho */}
+                        <motion.div
                             variants={fadeInUp}
                             initial="hidden"
                             animate="visible"
                             transition={{ delay: 0.4 }}
-                            className="text-lg md:text-2xl text-secondary-muted max-w-2xl mb-12 font-light leading-relaxed"
+                            className="mb-12"
                         >
-                            Desarrollo de software a medida, automatización inteligente y soluciones digitales de clase mundial.
-                            <motion.span
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.8, duration: 0.5 }}
-                                className="text-white font-medium"
-                            > Tecnología global, hecha localmente.</motion.span>
-                        </motion.p>
+                            <p className="text-lg md:text-2xl text-secondary-muted max-w-2xl font-light leading-relaxed italic border-l-4 border-primary pl-6 py-2">
+                                "En el corazón de la Mixteca, un artesano no solo crea un objeto; cuenta una historia con sus manos. Hoy, el mundo ha cambiado, y las herramientas también.
+                                <span className="text-white font-medium block mt-4">
+                                    Ya no solo tejemos palma o tallamos madera; ahora tejemos algoritmos y tallamos código."
+                                </span>
+                            </p>
+                        </motion.div>
 
                         {/* CTA Buttons */}
                         <motion.div
@@ -233,7 +230,7 @@ const Hero = () => {
                         initial={{ opacity: 0, x: 100, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.3 }}
-                        className="hidden lg:flex justify-center items-center"
+                        className="hidden lg:flex justify-center items-center w-full h-full"
                     >
                         <MixtecGrecaAnimation />
                     </motion.div>

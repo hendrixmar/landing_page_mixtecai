@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Philosophy from './components/Philosophy';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
@@ -17,6 +18,7 @@ function App() {
 
             <main className="flex-grow relative z-10">
                 <Hero />
+                <Philosophy />
                 <Features />
                 <Testimonials />
                 <Contact />
@@ -27,7 +29,7 @@ function App() {
                 {/* Footer Gradient Background */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute bottom-0 left-1/4 w-96 h-64 bg-primary/5 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 right-1/4 w-96 h-64 bg-accent-purple/5 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-0 right-1/4 w-96 h-64 bg-accent-magenta/5 rounded-full blur-[120px]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
@@ -41,17 +43,19 @@ function App() {
                             className="md:col-span-2"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                <img
-                                    src="/logo.jpg"
-                                    alt="mixtecAI Logo"
-                                    className="w-10 h-10 rounded-full border-2 border-primary object-cover"
-                                />
+                                <div className="w-11 h-11 rounded-xl bg-white overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,174,239,0.6)]">
+                                    <img
+                                        src="/logos.jpg"
+                                        alt="Artesanos Digitales"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                                 <span className="text-2xl font-black tracking-tighter text-white">
-                                    mixtec<span className="text-primary">AI</span>
+                                    Artesanos <span className="text-primary">Digitales</span>
                                 </span>
                             </div>
                             <p className="text-secondary-muted max-w-sm mb-4">
-                                Transformando negocios de la Mixteca con tecnología de clase mundial. Software a medida, IA y soluciones digitales.
+                                Transformando negocios con software y diseño de calidad artesanal. Soluciones digitales hechas a medida.
                             </p>
                             <div className="flex gap-4">
                                 {['Twitter', 'LinkedIn', 'GitHub', 'Instagram'].map((social) => (
@@ -100,7 +104,7 @@ function App() {
                         >
                             <h4 className="text-white font-bold mb-4">Contacto</h4>
                             <ul className="space-y-2 text-sm text-secondary-muted">
-                                <li>contacto@mixtecai.com</li>
+                                <li>contacto@artesanosdigitales.com</li>
                                 <li>+52 (953) 123-4567</li>
                                 <li>Huajuapan de León, Oaxaca</li>
                             </ul>
@@ -125,12 +129,12 @@ function App() {
                         className="flex flex-col md:flex-row justify-between items-center gap-4"
                     >
                         <p className="text-secondary-muted/60 text-sm">
-                            &copy; {new Date().getFullYear()} Elevate Software Consultancy. All rights reserved.
+                            &copy; {new Date().getFullYear()} Artesanos Digitales Studio. All rights reserved.
                         </p>
                         <div className="flex gap-6 text-sm text-secondary-muted/60">
-                            <motion.a href="#" whileHover={{ color: '#E91E63' }} className="transition-colors">Privacidad</motion.a>
-                            <motion.a href="#" whileHover={{ color: '#E91E63' }} className="transition-colors">Términos</motion.a>
-                            <motion.a href="#" whileHover={{ color: '#E91E63' }} className="transition-colors">Cookies</motion.a>
+                            <motion.a href="#" whileHover={{ color: '#00AEEF' }} className="transition-colors">Privacidad</motion.a>
+                            <motion.a href="#" whileHover={{ color: '#00AEEF' }} className="transition-colors">Términos</motion.a>
+                            <motion.a href="#" whileHover={{ color: '#00AEEF' }} className="transition-colors">Cookies</motion.a>
                         </div>
                     </motion.div>
                 </div>

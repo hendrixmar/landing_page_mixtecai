@@ -22,12 +22,12 @@ const Testimonials = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
             >
-                <div className="w-full h-full bg-gradient-to-r from-transparent via-accent-purple/50 to-transparent" />
+                <div className="w-full h-full bg-gradient-to-r from-transparent via-accent-magenta/50 to-transparent" />
             </motion.div>
 
             {/* Decorative Elements */}
             <div className="absolute top-20 right-10 w-64 h-64 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-20 left-10 w-64 h-64 bg-accent-purple/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-20 left-10 w-64 h-64 bg-accent-magenta/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -49,9 +49,9 @@ const Testimonials = () => {
                             <motion.div
                                 animate={{
                                     boxShadow: [
-                                        "0 0 20px rgba(233, 30, 99, 0.2)",
-                                        "0 0 40px rgba(233, 30, 99, 0.4)",
-                                        "0 0 20px rgba(233, 30, 99, 0.2)",
+                                        "0 0 20px rgba(236, 0, 140, 0.2)",
+                                        "0 0 40px rgba(236, 0, 140, 0.4)",
+                                        "0 0 20px rgba(236, 0, 140, 0.2)",
                                     ]
                                 }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -94,7 +94,7 @@ const Testimonials = () => {
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
                             <motion.div
-                                className="w-16 h-16 bg-gradient-to-br from-primary via-accent-purple to-cta rounded-2xl flex items-center justify-center font-bold text-2xl text-white shadow-lg"
+                                className="w-16 h-16 bg-gradient-to-br from-primary via-accent-magenta to-cta rounded-2xl flex items-center justify-center font-bold text-2xl text-white shadow-lg"
                                 whileHover={{ scale: 1.05, rotate: 5 }}
                                 transition={{ duration: 0.3 }}
                             >
@@ -129,13 +129,13 @@ const Testimonials = () => {
                             whileHover={{
                                 y: -8,
                                 rotateY: 5,
-                                boxShadow: "0 25px 50px -12px rgba(233, 30, 99, 0.25)"
+                                boxShadow: "0 25px 50px -12px rgba(236, 0, 140, 0.25)"
                             }}
                             className="group relative bg-surface border border-white/5 p-8 rounded-2xl overflow-hidden transition-all duration-500"
                         >
                             {/* Animated Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-accent-purple to-cta p-[1px]">
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-accent-magenta to-cta p-[1px]">
                                     <div className="w-full h-full bg-surface rounded-2xl" />
                                 </div>
                             </div>
@@ -158,7 +158,7 @@ const Testimonials = () => {
                                 </div>
 
                                 <p className="text-lg text-secondary leading-relaxed mb-6 italic">
-                                    "Gracias a mixtecAI, tenemos nuestro sistema de estacionamiento y un punto de venta. El sistema de inventario automatizado nos ahorra horas de trabajo diario."
+                                    "Gracias a Artesanos Digitales, tenemos nuestro sistema de estacionamiento y un punto de venta. El sistema de inventario automatizado nos ahorra horas de trabajo diario."
                                 </p>
 
                                 <div className="flex items-center justify-between">
@@ -187,13 +187,13 @@ const Testimonials = () => {
                             whileHover={{
                                 y: -8,
                                 rotateY: 5,
-                                boxShadow: "0 25px 50px -12px rgba(168, 85, 247, 0.25)"
+                                boxShadow: "0 25px 50px -12px rgba(236, 0, 140, 0.25)"
                             }}
                             className="group relative bg-surface border border-white/5 p-8 rounded-2xl ml-0 lg:ml-12 overflow-hidden transition-all duration-500"
                         >
                             {/* Animated Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-purple via-primary to-cta p-[1px]">
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-magenta via-primary to-cta p-[1px]">
                                     <div className="w-full h-full bg-surface rounded-2xl" />
                                 </div>
                             </div>
@@ -220,20 +220,20 @@ const Testimonials = () => {
                                 </p>
 
                                 <div className="flex items-center justify-between">
-                                    <div className="font-bold text-primary group-hover:text-accent-purple transition-colors">
-                                        Envíos Mixteca Express
+                                    <div className="font-bold text-primary group-hover:text-accent-magenta transition-colors">
+                                        Envíos AD Express
                                     </div>
                                     <motion.div
-                                        className="w-10 h-10 rounded-full bg-accent-purple/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                        className="w-10 h-10 rounded-full bg-accent-magenta/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                                         whileHover={{ scale: 1.1, rotate: 15 }}
                                     >
-                                        <Quote size={16} className="text-accent-purple" />
+                                        <Quote size={16} className="text-accent-magenta" />
                                     </motion.div>
                                 </div>
                             </div>
 
                             {/* Decorative Element */}
-                            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent-purple/5 rounded-full blur-3xl group-hover:bg-accent-purple/10 transition-colors duration-500" />
+                            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent-magenta/5 rounded-full blur-3xl group-hover:bg-accent-magenta/10 transition-colors duration-500" />
                         </motion.div>
 
                         {/* Trust Badge */}

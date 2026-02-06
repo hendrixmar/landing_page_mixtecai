@@ -24,14 +24,14 @@ const Contact = () => {
             title: "WhatsApp / Teléfono",
             value: "+52 (951) 238-9703",
             href: "https://wa.me/529512389703",
-            color: "from-accent-purple to-primary"
+            color: "from-accent-magenta to-primary"
         },
         {
             icon: <MapPin className="w-6 h-6" />,
             title: "Ubicación",
             value: "Huajuapan de León, Santa Teresa, Oaxaca",
             href: "https://maps.app.goo.gl/GBZAKSL58avatS9a9",
-            color: "from-cta to-accent-purple"
+            color: "from-cta to-accent-magenta"
         },
     ];
 
@@ -52,7 +52,7 @@ const Contact = () => {
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                    className="absolute bottom-20 left-20 w-96 h-96 bg-accent-purple/10 rounded-full blur-[150px]"
+                    className="absolute bottom-20 left-20 w-96 h-96 bg-accent-magenta/10 rounded-full blur-[150px]"
                     animate={{
                         scale: [1.2, 1, 1.2],
                         opacity: [0.3, 0.5, 0.3],
@@ -83,20 +83,14 @@ const Contact = () => {
                         </motion.span>
 
                         {/* Heading */}
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-3 mb-6">
-                            ¿LISTO PARA{" "}
-                            <span className="gradient-text">INNOVAR?</span>
+                        <h2 className="text-3xl md:text-5xl lg:text-5xl font-black text-white mt-3 mb-6">
+                            ¿Estás listo para crear algo <span className="gradient-text">EXTRAORDINARIO?</span>
                         </h2>
 
-                        <motion.p
-                            className="text-xl text-secondary-muted mb-12 max-w-md font-light"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                        >
-                            Cuéntame sobre tu proyecto. Analizaré tus requerimientos y te propondré una hoja de ruta en menos de 48 horas.
-                        </motion.p>
+                        <p className="text-xl text-secondary-muted mb-8 max-w-lg font-light leading-relaxed">
+                            "El futuro no tiene por qué ser frío ni genérico. Puede tener alma, historia y propósito.
+                            En <strong className="text-primary">Artesanos Digitales</strong>, estamos listos para esculpir el futuro de tu empresa."
+                        </p>
 
                         {/* Contact Info Cards */}
                         <div className="space-y-4">
@@ -320,7 +314,7 @@ const Contact = () => {
                                     transition={{ delay: 0.6 }}
                                     whileHover={{
                                         scale: 1.02,
-                                        boxShadow: "0 20px 40px -10px rgba(233, 30, 99, 0.4)"
+                                        boxShadow: "0 20px 40px -10px rgba(236, 0, 140, 0.4)"
                                     }}
                                     whileTap={{ scale: 0.98 }}
                                     className="group relative w-full bg-gradient-to-r from-primary to-primary-dark text-white font-bold py-4 rounded-lg overflow-hidden transition-all duration-300 flex items-center justify-center gap-2"
