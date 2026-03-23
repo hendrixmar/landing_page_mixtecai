@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ScrollArrow from './ScrollArrow';
 
 export default function Hero() {
     const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,7 @@ export default function Hero() {
                 </div>
 
                 <div className="hero-bottom-meta hero-anim hero-anim-5">
-                    <span className="meta-text">EST. 2024</span>
+                    <span className="meta-text">EST. 2026</span>
                     <span className="meta-text">LATITUD 17.8058° N</span>
                 </div>
             </div>
@@ -38,7 +39,7 @@ export default function Hero() {
                     className="hero-image"
                 />
             </div>
-            <div className="section-fade-bottom section-fade-dark-to-yellow" />
+            <ScrollArrow to="ethos" light />
         </header>
     );
 }

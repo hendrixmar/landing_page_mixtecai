@@ -55,7 +55,18 @@ export default function Contact() {
                 </div>
             </div>
 
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()} ref={formRef}>
+            <form
+                className="contact-form"
+                ref={formRef}
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    const subject = encodeURIComponent(`[${formData.interest}] Mensaje de ${formData.name}`);
+                    const body = encodeURIComponent(
+                        `Nombre: ${formData.name}\nEmail: ${formData.email}\nInterés: ${formData.interest}\n\n${formData.message}`
+                    );
+                    window.location.href = `mailto:hendrikmartina@artesanosdigitalescom.com?subject=${subject}&body=${body}`;
+                }}
+            >
                 <div className={`form-row reveal reveal-up ${formVisible ? 'revealed' : ''}`}>
                     <div className="form-group">
                         <label htmlFor="name">Nombre</label>

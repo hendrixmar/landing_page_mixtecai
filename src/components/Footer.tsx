@@ -9,7 +9,7 @@ export default function Footer() {
                 </p>
             </div>
             <div style={{ textAlign: 'right' }}>
-                <span className="meta-text">&copy; 2024</span>
+                <span className="meta-text">&copy; 2026</span>
                 <div style={{ marginTop: 'var(--space-xs)' }}>
                     <a href="#" className="meta-text" style={{ textDecoration: 'none', marginLeft: 'var(--space-sm)' }}>
                         LinkedIn

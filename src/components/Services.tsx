@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 const services = [
     { number: '01', title: 'Desarrollo a Medida' },
@@ -28,6 +29,7 @@ export default function Services() {
                     </a>
                 ))}
             </div>
+            <ScrollArrow to="differentials" />
         </section>
     );
 }

@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 export default function Editorial() {
     const { ref: imgRef, visible: imgVisible } = useReveal(0.15);
@@ -25,6 +26,7 @@ export default function Editorial() {
                     <a href="#" className="btn-solid">Conocer al Equipo</a>
                 </div>
             </div>
+            <ScrollArrow to="contact" />
         </section>
     );
 }

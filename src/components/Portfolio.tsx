@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 const projects = [
     {
@@ -74,7 +75,7 @@ export default function Portfolio() {
                     </a>
                 ))}
             </div>
-            <div className="section-fade-bottom section-fade-dark-to-dark" />
+            <ScrollArrow to="testimonials" light />
         </section>
     );
 }

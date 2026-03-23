@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 const testimonials = [
     {
@@ -40,7 +41,7 @@ export default function Testimonials() {
                     </div>
                 ))}
             </div>
-            <div className="section-fade-bottom section-fade-dark-to-bone" />
+            <ScrollArrow to="studio" light />
         </section>
     );
 }

@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 export default function Manifesto() {
     const { ref, visible } = useReveal<HTMLElement>(0.2);
@@ -11,9 +12,9 @@ export default function Manifesto() {
                 <span>Tejido</span>
             </h2>
             <p className={`manifesto-body reveal reveal-up reveal-d2 ${visible ? 'revealed' : ''}`}>
-                Cada línea de código la tratamos como un hilo en un telar. Construimos con paciencia, detalle y el rigor de quien sabe que su trabajo lleva el nombre de su tierra.
+                Ya no solo tejemos palma o tallamos madera, ahora esculpimos algoritmos y le damos forma al código.
             </p>
-            <div className="section-fade-bottom section-fade-yellow-to-dark" />
+            <ScrollArrow to="problem" />
         </section>
     );
 }

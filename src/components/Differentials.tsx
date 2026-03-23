@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 const items = [
     {
@@ -26,7 +27,7 @@ export default function Differentials() {
     const { ref: gridRef, visible: gridVisible } = useReveal(0.1);
 
     return (
-        <section className="differentials">
+        <section className="differentials" id="differentials">
             <div ref={headerRef}>
                 <span className={`eyebrow reveal reveal-up ${headerVisible ? 'revealed' : ''}`}>Por Qué Nosotros</span>
                 <h2 className={`differentials-heading serif-display reveal reveal-up reveal-d1 ${headerVisible ? 'revealed' : ''}`}>
@@ -45,7 +46,7 @@ export default function Differentials() {
                     </div>
                 ))}
             </div>
-            <div className="section-fade-bottom section-fade-bone-to-dark" style={{ marginTop: 'var(--space-lg)' }} />
+            <ScrollArrow to="portfolio" />
         </section>
     );
 }

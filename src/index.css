@@ -166,44 +166,15 @@ h1, h2, h3, .serif-display {
     transform: scale(1);
 }
 
-/* ── Section color transition gradients ── */
-.section-fade-bottom {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 120px;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.section-fade-dark-to-yellow {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-yellow) 100%);
-}
-
-.section-fade-yellow-to-dark {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
-}
-
-.section-fade-dark-to-bone {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-bone) 100%);
-}
-
-.section-fade-bone-to-dark {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
-}
-
-.section-fade-dark-to-dark {
-    background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
-}
-
-/* Sections need relative positioning for fade overlays */
+/* Section positioning */
 .hero,
 .manifesto,
 .problem,
+.index-section,
 .differentials,
 .portfolio,
-.testimonials {
+.testimonials,
+.editorial {
     position: relative;
 }
 
@@ -911,6 +882,65 @@ h1, h2, h3, .serif-display {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+/* Scroll arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: bounce-arrow 2s ease-in-out infinite;
+}
+
+.scroll-arrow:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(2px);
+}
+
+.scroll-arrow-light {
+    border-color: var(--hairline-light);
+    color: var(--text-light);
+}
+
+@keyframes bounce-arrow {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* WhatsApp floating button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    z-index: 99;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
 }
 
 /* Responsive */

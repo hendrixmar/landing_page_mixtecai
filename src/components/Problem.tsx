@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrollArrow from './ScrollArrow';
 
 export default function Problem() {
     const { ref: leftRef, visible: leftVisible } = useReveal(0.2);
@@ -12,7 +13,7 @@ export default function Problem() {
     ];
 
     return (
-        <section className="problem">
+        <section className="problem" id="problem">
             <div className="problem-content" ref={leftRef}>
                 <span className={`eyebrow reveal reveal-left ${leftVisible ? 'revealed' : ''}`}>El Problema</span>
                 <h2 className={`problem-title serif-display reveal reveal-left reveal-d1 ${leftVisible ? 'revealed' : ''}`}>
@@ -39,10 +40,10 @@ export default function Problem() {
                     No entregamos un producto y nos vamos. Nos sentamos contigo, entendemos tu operación, y construimos soluciones que realmente funcionan para tu negocio. Cuando tú creces, nosotros crecemos. Así de simple.
                 </p>
                 <blockquote className={`problem-quote reveal reveal-right reveal-d3 ${rightVisible ? 'revealed' : ''}`}>
-                    "No medimos nuestro éxito por proyectos terminados, sino por clientes que siguen creciendo con lo que construimos juntos."
+                    "El costo de la curiosidad se ha reducido a 0."
                 </blockquote>
             </div>
-            <div className="section-fade-bottom section-fade-dark-to-bone" />
+            <ScrollArrow to="services" light />
         </section>
     );
 }

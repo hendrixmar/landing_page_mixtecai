@@ -8,7 +8,9 @@ export default function Navbar() {
                 <a href="#ethos">Ethos</a>
                 <a href="#services">Servicios</a>
                 <a href="#portfolio">Portafolio</a>
+                <a href="#testimonials">Testimonios</a>
                 <a href="#studio">Estudio</a>
+                <a href="#contact">Contacto</a>
             </div>
         </nav>
     );
