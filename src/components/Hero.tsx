@@ -1,28 +1,53 @@
 import { useEffect, useState } from 'react';
 import ScrollArrow from './ScrollArrow';
+import AsciiCanvas from './AsciiCanvas';
+import { useTextScramble } from '../hooks/useTextScramble';
 
 export default function Hero() {
     const [loaded, setLoaded] = useState(false);
+    const { text: titleText, scramble: scrambleTitle } = useTextScramble(
+        'Artesanos Digitales'
+    );
 
     useEffect(() => {
-        const t = setTimeout(() => setLoaded(true), 100);
+        const t = setTimeout(() => {
+            setLoaded(true);
+            scrambleTitle();
+        }, 100);
         return () => clearTimeout(t);
-    }, []);
+    }, [scrambleTitle]);
 
     return (
-        <header className="hero">
-            <div className={`hero-content ${loaded ? 'hero-entered' : ''}`}>
+        <header className="hero hero-canvas-layout" id="hero">
+            {/* ASCII Canvas Background */}
+            <div className="hero-canvas-bg">
+                <AsciiCanvas />
+            </div>
+
+            {/* Content overlay */}
+            <div className={`hero-content hero-content-overlay ${loaded ? 'hero-entered' : ''}`}>
                 <div>
                     <span className="eyebrow hero-anim hero-anim-1" style={{ color: 'var(--accent-green)' }}>
                         Huajuapan de León, Oaxaca
                     </span>
-                    <h1 className="hero-title hero-anim hero-anim-2">
-                        Artesanos <i>Digitales</i>
+                    <h1
+                        className="hero-title hero-anim hero-anim-2"
+                        onMouseEnter={scrambleTitle}
+                        style={{ cursor: 'default' }}
+                    >
+                        {titleText.split('').map((ch, i) =>
+                            // Check if this character is a scramble char
+                            '!<>-_\\/[]{}—=+*^?#_'.includes(ch) ? (
+                                <span key={i} className="scramble-char">{ch}</span>
+                            ) : (
+                                <span key={i}>{ch}</span>
+                            )
+                        )}
                     </h1>
-                    <p className="meta-text hero-anim hero-anim-3" style={{ maxWidth: 300, marginBottom: 'var(--space-md)' }}>
+                    <p className="meta-text hero-anim hero-anim-3" style={{ maxWidth: 340, marginBottom: 'var(--space-md)' }}>
                         Soluciones digitales hechas a mano. Trabajamos codo a codo con nuestros clientes para construir algo que supere lo esperado.
                     </p>
-                    <a href="#contact" className="btn-outline hero-anim hero-anim-4" style={{ color: 'var(--bg-bone)' }}>
+                    <a href="#contact" className="btn-outline btn-outline-light hero-anim hero-anim-4">
                         Iniciar Diálogo
                     </a>
                 </div>
@@ -32,13 +57,7 @@ export default function Hero() {
                     <span className="meta-text">LATITUD 17.8058° N</span>
                 </div>
             </div>
-            <div className={`hero-image-container ${loaded ? 'hero-img-entered' : ''}`}>
-                <img
-                    src="https://images.pexels.com/photos/5602900/pexels-photo-5602900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt="Textura artesanal"
-                    className="hero-image"
-                />
-            </div>
+
             <ScrollArrow to="ethos" light />
         </header>
     );

@@ -79,8 +79,18 @@ h1, h2, h3, .serif-display {
 }
 
 .btn-outline:hover {
-    background-color: currentColor;
+    background-color: var(--text-dark);
     color: var(--bg-bone);
+}
+
+.btn-outline-light {
+    color: var(--bg-bone);
+    border-color: var(--bg-bone);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--bg-bone);
+    color: var(--bg-dark);
 }
 
 .btn-solid {
@@ -154,19 +164,22 @@ h1, h2, h3, .serif-display {
 .hero-anim-4 { transition-delay: 0.65s; }
 .hero-anim-5 { transition-delay: 0.8s; }
 
-.hero-image-container {
+.hero-canvas-bg {
     opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 }
 
-.hero-img-entered {
+.hero-entered ~ .scroll-arrow,
+.hero-content-overlay.hero-entered {
+    /* Canvas fades in when hero-entered is set */
+}
+
+/* Trigger canvas fade-in from parent */
+.hero-canvas-layout:has(.hero-entered) .hero-canvas-bg {
     opacity: 1;
-    transform: scale(1);
 }
 
-/* Section positioning */
+/* Section positioning & stacking — each section sits above the previous */
 .hero,
 .manifesto,
 .problem,
@@ -174,9 +187,26 @@ h1, h2, h3, .serif-display {
 .differentials,
 .portfolio,
 .testimonials,
-.editorial {
+.editorial,
+.contact,
+.site-footer {
     position: relative;
+    z-index: 1;
 }
+
+.hero {
+    z-index: 0;
+}
+
+.manifesto  { z-index: 2; }
+.problem    { z-index: 3; }
+.index-section { z-index: 4; }
+.differentials { z-index: 5; }
+.portfolio  { z-index: 6; }
+.testimonials { z-index: 7; }
+.editorial  { z-index: 8; }
+.contact    { z-index: 9; }
+.site-footer { z-index: 10; }
 
 /* Editorial image wrapper */
 .editorial-img-wrap {
@@ -216,9 +246,31 @@ h1, h2, h3, .serif-display {
     background-color: var(--bg-dark);
     color: var(--text-light);
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: var(--space-xl) var(--space-md) var(--space-md);
+}
+
+.hero.hero-canvas-layout {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-canvas-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.ascii-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content-overlay {
+    position: relative;
+    z-index: 1;
+    height: calc(100vh - var(--space-xl) - var(--space-md));
 }
 
 .hero-content {
@@ -233,25 +285,9 @@ h1, h2, h3, .serif-display {
     margin-bottom: var(--space-md);
 }
 
-.hero-title i {
-    font-style: italic;
-    font-weight: 400;
-    display: block;
-    margin-left: 10%;
-}
-
-.hero-image-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 2px;
-}
-
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(20%) contrast(1.2);
+.hero-title .scramble-char {
+    font-family: monospace;
+    opacity: 0.5;
 }
 
 .hero-bottom-meta {
@@ -270,6 +306,11 @@ h1, h2, h3, .serif-display {
     padding: var(--space-xl) var(--space-md);
     text-align: center;
     border-bottom: 1px solid var(--hairline-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .manifesto-statement {
@@ -301,6 +342,8 @@ h1, h2, h3, .serif-display {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: var(--space-lg);
+    min-height: 100vh;
+    align-content: center;
 }
 
 .index-header {
@@ -361,11 +404,15 @@ h1, h2, h3, .serif-display {
 .portfolio {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .portfolio-header {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     max-width: 600px;
 }
 
@@ -390,13 +437,12 @@ h1, h2, h3, .serif-display {
 
 .portfolio-card {
     background-color: var(--bg-dark);
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     text-decoration: none;
     color: var(--text-light);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 420px;
     transition: background-color 0.3s ease;
 }
 
@@ -408,7 +454,7 @@ h1, h2, h3, .serif-display {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .portfolio-number {
@@ -465,9 +511,9 @@ h1, h2, h3, .serif-display {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--space-md);
+    padding-top: var(--space-sm);
     border-top: 1px solid var(--hairline-light);
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
 }
 
 .portfolio-link {
@@ -502,6 +548,7 @@ h1, h2, h3, .serif-display {
     grid-template-columns: 1fr 1fr;
     background-color: var(--bg-bone);
     border-top: 1px solid var(--hairline-dark);
+    min-height: 100vh;
 }
 
 .editorial-image {
@@ -536,6 +583,7 @@ h1, h2, h3, .serif-display {
     grid-template-columns: 1fr 1fr;
     background-color: var(--bg-dark);
     color: var(--text-light);
+    min-height: 100vh;
 }
 
 .problem-content,
@@ -602,6 +650,10 @@ h1, h2, h3, .serif-display {
     padding: var(--space-xl) var(--space-md);
     text-align: center;
     border-top: 1px solid var(--hairline-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .differentials-heading {
@@ -664,6 +716,8 @@ h1, h2, h3, .serif-display {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
+    min-height: 100vh;
+    align-content: center;
 }
 
 .testimonials-title {
@@ -729,6 +783,7 @@ h1, h2, h3, .serif-display {
     grid-template-columns: 1fr 1fr;
     background-color: var(--bg-bone);
     border-top: 1px solid var(--hairline-dark);
+    min-height: 100vh;
 }
 
 .contact-info {
@@ -943,8 +998,9 @@ h1, h2, h3, .serif-display {
     box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
 }
 
-/* Responsive */
+/* ── Responsive: Tablet ── */
 @media (max-width: 1024px) {
+    /* All grid sections go single-column */
     .hero, .index-section, .editorial, .problem, .testimonials, .contact {
         grid-template-columns: 1fr;
     }
@@ -952,7 +1008,19 @@ h1, h2, h3, .serif-display {
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
-    .portfolio-card {
+
+    /* Hero */
+    .hero-content {
+        padding-right: 0;
+    }
+
+    /* Manifesto */
+    .manifesto-statement {
+        font-size: clamp(3rem, 8vw, 6rem);
+    }
+
+    /* Problem */
+    .problem {
         min-height: auto;
     }
     .problem-content {
@@ -966,6 +1034,44 @@ h1, h2, h3, .serif-display {
     .problem-issues {
         grid-template-columns: 1fr;
     }
+    .problem-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    /* Services */
+    .index-title {
+        font-size: 2rem;
+    }
+
+    /* Portfolio */
+    .portfolio {
+        min-height: auto;
+        padding: var(--space-lg) var(--space-md);
+    }
+    .portfolio-card {
+        min-height: auto;
+    }
+
+    /* Editorial */
+    .editorial {
+        min-height: auto;
+    }
+    .editorial-image {
+        height: 50vh;
+    }
+    .editorial-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    /* Testimonials */
+    .testimonials {
+        min-height: auto;
+    }
+
+    /* Contact */
+    .contact {
+        min-height: auto;
+    }
     .contact-info,
     .contact-form {
         padding: var(--space-lg) var(--space-md);
@@ -973,24 +1079,166 @@ h1, h2, h3, .serif-display {
     .form-row {
         grid-template-columns: 1fr;
     }
-    .hero-content {
-        padding-right: 0;
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 640px) {
+    :root {
+        --space-md: 1.5rem;
+        --space-lg: 3rem;
+        --space-xl: 5rem;
     }
-    .hero-image-container, .editorial-image {
-        height: 60vh;
-        margin-top: var(--space-md);
+
+    /* Nav: hide links, keep logo */
+    .nav-links {
+        display: none;
     }
-    .hero {
-        padding-top: var(--space-xl);
+    .site-nav {
+        padding: var(--space-sm);
+    }
+    .seal-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+    .hero-content-overlay {
+        height: calc(100vh - var(--space-xl) - var(--space-sm));
+    }
+
+    /* Manifesto */
+    .manifesto {
+        padding: var(--space-lg) var(--space-sm);
+    }
+    .manifesto-statement {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    .manifesto-body {
+        font-size: 1.3rem;
+    }
+
+    /* Problem */
+    .problem-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    .problem-body {
+        font-size: 0.95rem;
+    }
+    .problem-quote {
+        font-size: 1.1rem;
+        padding-left: var(--space-sm);
+    }
+
+    /* Services */
+    .index-section {
+        padding: var(--space-lg) var(--space-sm);
         min-height: auto;
     }
     .index-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
-    .manifesto-statement {
-        font-size: 4rem;
+    .index-item {
+        gap: var(--space-sm);
+        padding: var(--space-sm) 0;
     }
-    .editorial-content {
-        padding: var(--space-lg) var(--space-md);
+
+    /* Differentials */
+    .differentials {
+        padding: var(--space-lg) var(--space-sm);
+        min-height: auto;
+    }
+    .differentials-heading {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+    .differentials-subtitle {
+        font-size: 1.1rem;
+    }
+    .differential-card {
+        padding: var(--space-md) var(--space-sm);
+    }
+    .differential-title {
+        font-size: 1.5rem;
+    }
+
+    /* Portfolio */
+    .portfolio {
+        padding: var(--space-lg) var(--space-sm);
+    }
+    .portfolio-heading {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+    .portfolio-name {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    .portfolio-desc {
+        font-size: 0.85rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: var(--space-lg) var(--space-sm);
+    }
+    .testimonials-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    .testimonial-quote {
+        font-size: 1.1rem;
+    }
+
+    /* Editorial */
+    .editorial-image {
+        height: 40vh;
+    }
+    .editorial-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    .editorial-body {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    /* Contact */
+    .contact-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    .contact-body {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    .contact-form {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    /* Footer */
+    .site-footer {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: flex-start;
+        padding: var(--space-md) var(--space-sm);
+    }
+    .site-footer div:last-child {
+        text-align: left;
+    }
+
+    /* Scroll arrow smaller on mobile */
+    .scroll-arrow {
+        width: 32px;
+        height: 32px;
+        bottom: var(--space-sm);
+    }
+
+    /* WhatsApp button smaller */
+    .whatsapp-btn {
+        width: 48px;
+        height: 48px;
+        bottom: var(--space-sm);
+        right: var(--space-sm);
+    }
+    .whatsapp-btn svg {
+        width: 22px;
+        height: 22px;
     }
 }
