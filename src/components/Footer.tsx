@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="site-footer">
+        <footer className="site-footer" id="footer">
             <div>
                 <span className="eyebrow">Artesanos Digitales</span>
                 <p className="meta-text" style={{ maxWidth: 250, marginTop: 'var(--space-xs)' }}>

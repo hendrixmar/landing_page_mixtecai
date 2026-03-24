@@ -18,7 +18,7 @@ export default function Hero() {
     }, [scrambleTitle]);
 
     return (
-        <header className="hero hero-canvas-layout">
+        <header className="hero hero-canvas-layout" id="hero">
             {/* ASCII Canvas Background */}
             <div className="hero-canvas-bg">
                 <AsciiCanvas />

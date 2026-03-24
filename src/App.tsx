@@ -10,8 +10,11 @@ import Editorial from './components/Editorial';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import { useSnapScroll } from './hooks/useSnapScroll';
 
 function App() {
+    useSnapScroll();
+
     return (
         <>
             <Navbar />
