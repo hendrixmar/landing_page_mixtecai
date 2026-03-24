@@ -3,20 +3,16 @@ export default function Footer() {
         <footer className="site-footer" id="footer">
             <div>
                 <span className="eyebrow">Artesanos Digitales</span>
-                <p className="meta-text" style={{ maxWidth: 250, marginTop: 'var(--space-xs)' }}>
+                <p className="meta-text footer-address">
                     Huajuapan de León, Oaxaca, México.<br />
                     Codificado a mano.
                 </p>
             </div>
-            <div style={{ textAlign: 'right' }}>
+            <div className="footer-right">
                 <span className="meta-text">&copy; 2026</span>
-                <div style={{ marginTop: 'var(--space-xs)' }}>
-                    <a href="#" className="meta-text" style={{ textDecoration: 'none', marginLeft: 'var(--space-sm)' }}>
-                        LinkedIn
-                    </a>
-                    <a href="#" className="meta-text" style={{ textDecoration: 'none', marginLeft: 'var(--space-sm)' }}>
-                        GitHub
-                    </a>
+                <div className="footer-links">
+                    <a href="#" className="meta-text footer-link">LinkedIn</a>
+                    <a href="#" className="meta-text footer-link">GitHub</a>
                 </div>
             </div>
         </footer>

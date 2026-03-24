@@ -359,6 +359,11 @@ h1, h2, h3, .serif-display {
     opacity: 0.5;
 }
 
+.hero-desc {
+    max-width: 340px;
+    margin-bottom: var(--space-md);
+}
+
 .hero-bottom-meta {
     display: flex;
     justify-content: space-between;
@@ -419,6 +424,11 @@ h1, h2, h3, .serif-display {
     position: sticky;
     top: var(--space-xl);
     align-self: start;
+}
+
+.index-header-title {
+    font-size: 3rem;
+    margin-top: var(--space-xs);
 }
 
 .index-list {
@@ -1008,6 +1018,24 @@ h1, h2, h3, .serif-display {
     align-items: flex-end;
 }
 
+.footer-address {
+    max-width: 250px;
+    margin-top: var(--space-xs);
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-links {
+    margin-top: var(--space-xs);
+}
+
+.footer-link {
+    text-decoration: none;
+    margin-left: var(--space-sm);
+}
+
 /* Scroll arrow */
 .scroll-arrow {
     position: absolute;
@@ -1067,15 +1095,21 @@ h1, h2, h3, .serif-display {
     box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
 }
 
-/* ── Responsive: Tablet ── */
+/* ── Responsive: Tablet (<=1024px) ── */
 @media (max-width: 1024px) {
-    /* All grid sections go single-column */
+    /* All grid sections → single column */
     .hero, .index-section, .editorial, .problem, .testimonials, .contact {
         grid-template-columns: 1fr;
     }
     .differentials-grid,
     .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Kill all min-height:100vh — let content breathe */
+    .hero, .manifesto, .problem, .index-section, .differentials,
+    .portfolio, .testimonials, .editorial, .contact {
+        min-height: auto !important;
     }
 
     /* Hero */
@@ -1089,9 +1123,6 @@ h1, h2, h3, .serif-display {
     }
 
     /* Problem */
-    .problem {
-        min-height: auto;
-    }
     .problem-content {
         border-right: none;
         border-bottom: 1px solid var(--hairline-light);
@@ -1103,9 +1134,6 @@ h1, h2, h3, .serif-display {
     .problem-issues {
         grid-template-columns: 1fr;
     }
-    .problem-title {
-        font-size: clamp(2rem, 5vw, 3rem);
-    }
 
     /* Services */
     .index-title {
@@ -1113,34 +1141,20 @@ h1, h2, h3, .serif-display {
     }
 
     /* Portfolio */
-    .portfolio {
-        min-height: auto;
-        padding: var(--space-lg) var(--space-md);
-    }
     .portfolio-card {
         min-height: auto;
     }
 
     /* Editorial */
-    .editorial {
-        min-height: auto;
-    }
-    .editorial-image {
+    .editorial-image,
+    .editorial-img-wrap {
         height: 50vh;
     }
     .editorial-content {
         padding: var(--space-lg) var(--space-md);
     }
 
-    /* Testimonials */
-    .testimonials {
-        min-height: auto;
-    }
-
     /* Contact */
-    .contact {
-        min-height: auto;
-    }
     .contact-info,
     .contact-form {
         padding: var(--space-lg) var(--space-md);
@@ -1150,15 +1164,26 @@ h1, h2, h3, .serif-display {
     }
 }
 
-/* ── Responsive: Mobile ── */
+/* ── Responsive: Mobile (<=640px) ── */
 @media (max-width: 640px) {
+    /* Reduce global spacing */
     :root {
-        --space-md: 1.5rem;
-        --space-lg: 3rem;
-        --space-xl: 5rem;
+        --space-md: 1.25rem;
+        --space-lg: 2rem;
+        --space-xl: 3rem;
     }
 
-    /* Nav: hamburger on mobile */
+    /* Disable smooth scroll — let native momentum work */
+    html {
+        scroll-behavior: auto;
+    }
+
+    /* Lock body scroll when mobile menu open */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* ── Nav ── */
     .nav-desktop {
         display: none;
     }
@@ -1166,185 +1191,232 @@ h1, h2, h3, .serif-display {
         display: flex;
     }
     .site-nav {
-        padding: var(--space-sm);
+        padding: 0.75rem 1rem;
     }
     .seal-logo {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
+    }
+    .nav-mobile-link {
+        font-size: 2rem;
     }
 
-    /* Hero */
+    /* ── Hero ── */
     .hero {
-        min-height: 100svh;
-        padding: var(--space-lg) var(--space-sm) var(--space-sm);
+        padding: 4rem 1rem 1rem;
     }
     .hero-title {
-        font-size: clamp(2.5rem, 10vw, 4rem);
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
     }
     .hero-content-overlay {
-        height: calc(100svh - var(--space-lg) - var(--space-sm));
+        height: calc(100svh - 5rem);
     }
     .hero-bottom-meta {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.25rem;
     }
+    .hero-desc {
+        max-width: 100%;
+    }
 
-    /* Manifesto */
+    /* ── Manifesto ── */
     .manifesto {
-        padding: var(--space-lg) var(--space-sm);
+        padding: 2rem 1rem;
     }
     .manifesto-statement {
         font-size: clamp(2.5rem, 12vw, 4rem);
     }
     .manifesto-body {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
-    /* Problem */
+    /* ── Problem ── */
+    .problem-content,
+    .problem-solution {
+        padding: 2rem 1rem;
+    }
     .problem-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
     .problem-body {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        max-width: 100%;
     }
     .problem-quote {
-        font-size: 1.1rem;
-        padding-left: var(--space-sm);
+        font-size: 1rem;
+        padding-left: 1rem;
     }
 
-    /* Services */
+    /* ── Services ── */
     .index-section {
-        padding: var(--space-lg) var(--space-sm);
-        min-height: auto;
+        padding: 2rem 1rem;
+    }
+    .index-header {
+        position: static;
+    }
+    .index-header-title {
+        font-size: 1.8rem;
     }
     .index-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     .index-item {
-        gap: var(--space-sm);
-        padding: var(--space-sm) 0;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+    }
+    .index-number {
+        width: 20px;
+        font-size: 0.7rem;
+    }
+    .index-action {
+        display: none;
     }
 
-    /* Differentials */
+    /* ── Differentials ── */
     .differentials {
-        padding: var(--space-lg) var(--space-sm);
-        min-height: auto;
+        padding: 2rem 1rem;
     }
     .differentials-heading {
-        font-size: clamp(2rem, 8vw, 3.5rem);
+        font-size: clamp(2rem, 8vw, 3rem);
     }
     .differentials-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
     .differential-card {
-        padding: var(--space-md) var(--space-sm);
+        padding: 1.25rem 1rem;
     }
     .differential-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
-
-    /* Portfolio */
-    .portfolio {
-        padding: var(--space-lg) var(--space-sm);
-        min-height: auto;
-    }
-    .portfolio-heading {
-        font-size: clamp(2rem, 8vw, 3.5rem);
-    }
-    .portfolio-name {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
-    }
-    .portfolio-desc {
+    .differential-desc {
         font-size: 0.85rem;
     }
+
+    /* ── Portfolio ── */
+    .portfolio {
+        padding: 2rem 1rem;
+    }
+    .portfolio-header {
+        margin-bottom: 1.5rem;
+    }
+    .portfolio-heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    .portfolio-subtitle {
+        font-size: 1rem;
+    }
     .portfolio-card {
-        padding: var(--space-sm);
+        padding: 1rem;
     }
     .portfolio-card-top {
         flex-direction: column;
         gap: 0.5rem;
+        margin-bottom: 0.75rem;
     }
     .portfolio-tags {
         justify-content: flex-start;
     }
+    .portfolio-name {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+    }
+    .portfolio-desc {
+        font-size: 0.8rem;
+    }
+    .portfolio-card-footer {
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    .portfolio-link {
+        opacity: 1;
+        transform: none;
+    }
 
-    /* Testimonials */
+    /* ── Testimonials ── */
     .testimonials {
-        padding: var(--space-lg) var(--space-sm);
+        padding: 2rem 1rem;
     }
     .testimonials-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
     .testimonial-quote {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    .testimonial-card {
+        padding: 1.25rem;
     }
 
-    /* Editorial */
-    .editorial {
-        min-height: auto;
-    }
+    /* ── Editorial ── */
     .editorial-img-wrap,
     .editorial-image {
-        height: 40vh;
+        height: 35vh;
+    }
+    .editorial-content {
+        padding: 1.5rem 1rem;
     }
     .editorial-title {
-        font-size: clamp(2rem, 8vw, 3rem);
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
     }
     .editorial-body {
         max-width: 100%;
-        font-size: 1rem;
-    }
-    .editorial-content {
-        padding: var(--space-md) var(--space-sm);
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
     }
 
-    /* Contact */
-    .contact {
-        min-height: auto;
-    }
+    /* ── Contact ── */
     .contact-info {
-        padding: var(--space-lg) var(--space-sm);
+        padding: 2rem 1rem;
     }
     .contact-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
     .contact-body {
-        font-size: 1rem;
+        font-size: 0.95rem;
         max-width: 100%;
     }
     .contact-detail-value {
-        font-size: 1rem;
-        word-break: break-all;
+        font-size: 0.95rem;
+        word-break: break-word;
     }
     .contact-form {
-        padding: var(--space-lg) var(--space-sm);
+        padding: 2rem 1rem;
     }
 
-    /* Footer */
+    /* ── Footer ── */
     .site-footer {
         flex-direction: column;
-        gap: var(--space-md);
+        gap: 1.5rem;
         align-items: flex-start;
-        padding: var(--space-md) var(--space-sm);
+        padding: 1.5rem 1rem;
     }
-    .site-footer div:last-child {
+    .footer-address {
+        max-width: 100%;
+    }
+    .footer-right {
         text-align: left;
     }
-
-    /* Scroll arrow smaller on mobile */
-    .scroll-arrow {
-        width: 32px;
-        height: 32px;
-        bottom: var(--space-sm);
+    .footer-links {
+        display: flex;
+        gap: 1rem;
+    }
+    .footer-link {
+        margin-left: 0;
     }
 
-    /* WhatsApp button smaller */
+    /* ── Scroll arrow ── */
+    .scroll-arrow {
+        width: 30px;
+        height: 30px;
+        bottom: 0.75rem;
+    }
+
+    /* ── WhatsApp ── */
     .whatsapp-btn {
-        width: 48px;
-        height: 48px;
-        bottom: var(--space-sm);
-        right: var(--space-sm);
+        width: 46px;
+        height: 46px;
+        bottom: 0.75rem;
+        right: 0.75rem;
     }
     .whatsapp-btn svg {
         width: 22px;

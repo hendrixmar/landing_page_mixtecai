@@ -16,7 +16,7 @@ export default function Services() {
         <section className="index-section" id="services">
             <div className="index-header" ref={headerRef}>
                 <span className={`eyebrow reveal reveal-left ${headerVisible ? 'revealed' : ''}`}>Lo Que Hacemos</span>
-                <h2 className={`serif-display reveal reveal-left reveal-d1 ${headerVisible ? 'revealed' : ''}`} style={{ fontSize: '3rem', marginTop: 'var(--space-xs)' }}>
+                <h2 className={`serif-display reveal reveal-left reveal-d1 index-header-title ${headerVisible ? 'revealed' : ''}`}>
                     Áreas de <br /><i>Enfoque</i>
                 </h2>
             </div>

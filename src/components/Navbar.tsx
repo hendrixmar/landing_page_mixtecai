@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SealLogo from './SealLogo';
 
 const links = [
@@ -12,6 +12,11 @@ const links = [
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        document.body.classList.toggle('menu-open', open);
+        return () => document.body.classList.remove('menu-open');
+    }, [open]);
 
     return (
         <>

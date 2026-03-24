@@ -44,7 +44,7 @@ export default function Hero() {
                             )
                         )}
                     </h1>
-                    <p className="meta-text hero-anim hero-anim-3" style={{ maxWidth: 340, marginBottom: 'var(--space-md)' }}>
+                    <p className="meta-text hero-anim hero-anim-3 hero-desc">
                         Soluciones digitales hechas a mano. Trabajamos codo a codo con nuestros clientes para construir algo que supere lo esperado.
                     </p>
                     <a href="#contact" className="btn-outline btn-outline-light hero-anim hero-anim-4">
