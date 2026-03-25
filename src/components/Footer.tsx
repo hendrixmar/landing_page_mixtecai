@@ -5,7 +5,7 @@ export default function Footer() {
                 <span className="eyebrow">Artesanos Digitales</span>
                 <p className="meta-text footer-address">
                     Huajuapan de León, Oaxaca, México.<br />
-                    Codificado a mano.
+                    Código hecho a mano.
                 </p>
             </div>
             <div className="footer-right">

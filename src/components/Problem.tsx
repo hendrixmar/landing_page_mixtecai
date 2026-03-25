@@ -20,7 +20,7 @@ export default function Problem() {
                     Tu negocio merece <br /><i>más que lo básico</i>
                 </h2>
                 <p className={`problem-body reveal reveal-left reveal-d2 ${leftVisible ? 'revealed' : ''}`}>
-                    Muchas empresas reciben soluciones prefabricadas que no se adaptan a su realidad. Se pierde el toque humano, la atención al detalle y el compromiso de ver el proyecto hasta el final. Además, el talento tecnológico suele concentrarse en las grandes ciudades, dejando atrás la riqueza y el potencial de nuestras regiones.
+                    Muchas empresas reciben soluciones prefabricadas que no se adaptan a su realidad. Se pierden el toque humano, la atención al detalle y el compromiso de ver el proyecto hasta el final. Además, el talento tecnológico suele concentrarse en las grandes ciudades, dejando atrás la riqueza y el potencial de nuestras regiones.
                 </p>
                 <div className="problem-issues">
                     {issues.map((issue, i) => (

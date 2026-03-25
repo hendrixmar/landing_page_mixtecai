@@ -47,9 +47,14 @@ export default function Hero() {
                     <p className="meta-text hero-anim hero-anim-3 hero-desc">
                         Soluciones digitales hechas a mano. Trabajamos codo a codo con nuestros clientes para construir algo que supere lo esperado.
                     </p>
-                    <a href="#contact" className="btn-outline btn-outline-light hero-anim hero-anim-4">
-                        Iniciar Diálogo
-                    </a>
+                    <div className="hero-buttons hero-anim hero-anim-4">
+                        <a href="#contact" className="btn-solid">
+                            Digitaliza Mi Negocio Hoy
+                        </a>
+                        <a href="#portfolio" className="btn-outline btn-outline-light">
+                            Ver Portafolio
+                        </a>
+                    </div>
                 </div>
 
                 <div className="hero-bottom-meta hero-anim hero-anim-5">

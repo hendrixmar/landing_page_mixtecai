@@ -360,8 +360,17 @@ h1, h2, h3, .serif-display {
 }
 
 .hero-desc {
-    max-width: 340px;
+    max-width: 420px;
     margin-bottom: var(--space-md);
+    font-size: 1.05rem !important;
+    opacity: 0.85 !important;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .hero-bottom-meta {

@@ -15,7 +15,7 @@ export default function Editorial() {
                 />
             </div>
             <div className="editorial-content" ref={contentRef}>
-                <span className={`eyebrow reveal reveal-right ${contentVisible ? 'revealed' : ''}`}>Operaciones Base</span>
+                <span className={`eyebrow reveal reveal-right ${contentVisible ? 'revealed' : ''}`}>Base de Operaciones</span>
                 <h2 className={`editorial-title serif-display reveal reveal-right reveal-d1 ${contentVisible ? 'revealed' : ''}`}>
                     El Taller <br />Digital
                 </h2>
