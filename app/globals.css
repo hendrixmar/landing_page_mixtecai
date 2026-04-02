@@ -1115,10 +1115,14 @@ h1, h2, h3, .serif-display {
         grid-template-columns: 1fr;
     }
 
-    /* Kill all min-height:100vh — let content breathe */
-    .hero, .manifesto, .problem, .index-section, .differentials,
+    /* Kill all min-height:100vh — let content breathe (except manifesto) */
+    .hero, .problem, .index-section, .differentials,
     .portfolio, .testimonials, .editorial, .contact {
         min-height: auto !important;
+    }
+    .manifesto {
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     /* Hero */
@@ -1231,13 +1235,26 @@ h1, h2, h3, .serif-display {
 
     /* ── Manifesto ── */
     .manifesto {
-        padding: 2rem 1rem;
+        padding: var(--space-lg) var(--space-sm);
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     .manifesto-statement {
-        font-size: clamp(2.5rem, 12vw, 4rem);
+        font-size: clamp(3rem, 14vw, 4.5rem);
+        flex-direction: column;
+        gap: 0.15em;
+    }
+    .manifesto-statement span:nth-child(2) {
+        margin-left: 0;
     }
     .manifesto-body {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+        margin-top: var(--space-md);
     }
 
     /* ── Problem ── */
