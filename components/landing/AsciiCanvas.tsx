@@ -2,8 +2,27 @@
 
 import { useEffect, useRef } from 'react';
 
-const DENSITY_CHARS = " .'`^,:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
-const CHAR_SIZE = 12;
+const OAXACA_WORDS = [
+    'quesillo', 'tlayuda', 'memela', 'mole', 'mezcal', 'chocolate',
+    'chapulín', 'tasajo', 'tejate', 'tamales', 'barbacoa', 'mixteca',
+    'guelaguetza', 'alebrije', 'barro negro', 'tapete', 'huipil',
+    'copal', 'pulque', 'totopos', 'empanada', 'nicuatole', 'pan de yema',
+    'chilacayota', 'chintextle', 'hierba santa', 'hoja santa',
+    'enmolada', 'entomatada', 'enchilada', 'pozole', 'maguey',
+    'agave', 'petate', 'morral', 'rebozo', 'calenda', 'tepache',
+    'nieve', 'paleta', 'cacahuate', 'amaranto', 'nopal',
+];
+
+const WORD_FONT_SIZE = 11;
+
+interface FloatingWord {
+    word: string;
+    x: number;
+    y: number;
+    speed: number;
+    alpha: number;
+    baseAlpha: number;
+}
 
 function simpleNoise(x: number, y: number, t: number) {
     return (
@@ -17,6 +36,7 @@ export default function AsciiCanvas() {
     const mouseRef = useRef({ x: -9999, y: -9999 });
     const timeRef = useRef(0);
     const rafRef = useRef(0);
+    const wordsRef = useRef<FloatingWord[]>([]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -26,6 +46,27 @@ export default function AsciiCanvas() {
 
         let width = 0;
         let height = 0;
+
+        function initWords() {
+            const count = Math.floor((width * height) / 8000);
+            const words: FloatingWord[] = [];
+            for (let i = 0; i < count; i++) {
+                words.push(createWord());
+            }
+            wordsRef.current = words;
+        }
+
+        function createWord(forceBottom = false): FloatingWord {
+            const baseAlpha = 0.08 + Math.random() * 0.2;
+            return {
+                word: OAXACA_WORDS[Math.floor(Math.random() * OAXACA_WORDS.length)],
+                x: Math.random() * width,
+                y: forceBottom ? height + 20 : height * 0.35 + Math.random() * height * 0.65,
+                speed: 0.15 + Math.random() * 0.4,
+                alpha: baseAlpha,
+                baseAlpha,
+            };
+        }
 
         function resize() {
             const parent = canvas!.parentElement;
@@ -38,6 +79,7 @@ export default function AsciiCanvas() {
             ctx!.scale(dpr, dpr);
             canvas!.style.width = width + 'px';
             canvas!.style.height = height + 'px';
+            initWords();
         }
 
         function handleMouseMove(e: MouseEvent) {
@@ -52,61 +94,60 @@ export default function AsciiCanvas() {
         function render() {
             if (!ctx) return;
             ctx.clearRect(0, 0, width, height);
-            ctx.font = `${CHAR_SIZE}px monospace`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
 
-            const colsCount = Math.ceil(width / CHAR_SIZE);
-            const rowsCount = Math.ceil(height / CHAR_SIZE);
             const mx = mouseRef.current.x;
             const my = mouseRef.current.y;
             const t = timeRef.current;
 
-            for (let y = 0; y < rowsCount; y++) {
-                if (y < rowsCount * 0.3) continue;
+            ctx.font = `${WORD_FONT_SIZE}px monospace`;
+            ctx.textBaseline = 'middle';
 
-                for (let x = 0; x < colsCount; x++) {
-                    const posX = x * CHAR_SIZE;
-                    const posY = y * CHAR_SIZE;
-                    const dx = posX - mx;
-                    const dy = posY - my;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    const normalizedY = (rowsCount - y) / rowsCount;
-                    const noiseVal = simpleNoise(x, y, t * 0.5);
-                    const mountainHeight =
-                        0.3 +
-                        Math.sin(x * 0.05 + t * 0.1) * 0.1 +
-                        Math.cos(x * 0.2) * 0.05;
+            // Draw floating Oaxacan words
+            for (let i = 0; i < wordsRef.current.length; i++) {
+                const w = wordsRef.current[i];
 
-                    let char = '';
-                    let alpha = 0;
+                // Drift upward slowly
+                w.y -= w.speed;
+                // Gentle horizontal sway
+                const sway = Math.sin(t * 0.5 + i * 0.7) * 0.3;
+                w.x += sway;
 
-                    if (normalizedY < mountainHeight + noiseVal * 0.1) {
-                        const index = Math.floor(
-                            Math.abs(noiseVal) * DENSITY_CHARS.length
-                        );
-                        char = DENSITY_CHARS[index % DENSITY_CHARS.length];
-                        alpha = 1 - normalizedY * 2;
-                    }
+                // Respawn at bottom when off screen
+                if (w.y < height * 0.25) {
+                    wordsRef.current[i] = createWord(true);
+                    continue;
+                }
 
-                    if (dist < 150) {
-                        const lensStrength = 1 - dist / 150;
-                        if (Math.random() > 0.5) {
-                            char = Math.random() > 0.5 ? '0' : '1';
-                            ctx.fillStyle = `rgba(244, 244, 242, ${lensStrength * 0.9})`;
-                        } else {
-                            ctx.fillStyle = `rgba(88, 214, 105, ${alpha * 0.6})`;
-                        }
-                        const shiftX = (dx / dist) * 10 * lensStrength;
-                        const shiftY = (dy / dist) * 10 * lensStrength;
-                        ctx.fillText(
-                            char,
-                            posX + CHAR_SIZE / 2 - shiftX,
-                            posY + CHAR_SIZE / 2 - shiftY
-                        );
-                    } else if (char) {
-                        ctx.fillStyle = `rgba(244, 244, 242, ${alpha * 0.35})`;
-                        ctx.fillText(char, posX + CHAR_SIZE / 2, posY + CHAR_SIZE / 2);
+                // Fade based on vertical position (fainter near top)
+                const normalizedY = (w.y - height * 0.3) / (height * 0.7);
+                const positionAlpha = Math.max(0, normalizedY) * w.baseAlpha;
+
+                // Mouse interaction — words glow and scatter near cursor
+                const dx = w.x - mx;
+                const dy = w.y - my;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 180) {
+                    const lensStrength = 1 - dist / 180;
+                    // Push words away from cursor
+                    const pushX = (dx / Math.max(dist, 1)) * lensStrength * 6;
+                    const pushY = (dy / Math.max(dist, 1)) * lensStrength * 6;
+
+                    // Glow green near cursor
+                    const glowAlpha = Math.min(1, positionAlpha + lensStrength * 0.7);
+                    ctx.fillStyle = `rgba(88, 214, 105, ${glowAlpha})`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(w.word, w.x + pushX, w.y + pushY);
+                } else {
+                    // Normal rendering
+                    const noiseVal = simpleNoise(w.x * 0.02, w.y * 0.02, t * 0.3);
+                    const flicker = 0.7 + noiseVal * 0.3;
+                    const finalAlpha = positionAlpha * flicker;
+
+                    if (finalAlpha > 0.02) {
+                        ctx.fillStyle = `rgba(244, 244, 242, ${finalAlpha})`;
+                        ctx.textAlign = 'center';
+                        ctx.fillText(w.word, w.x, w.y);
                     }
                 }
             }
