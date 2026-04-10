@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     title: 'Artesanos Digitales | Huajuapan de León, Oaxaca',
     description:
         'Soluciones digitales hechas a mano desde la Mixteca. Trabajamos con nuestros clientes para construir algo que supere lo esperado.',
+    icons: {
+        icon: '/logo-ad.jpg',
+        apple: '/logo-ad.jpg',
+    },
 };
 
 export default function RootLayout({

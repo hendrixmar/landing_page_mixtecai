@@ -109,10 +109,16 @@ h1, h2, h3, .serif-display {
     opacity: 0.8;
 }
 
-.seal-logo {
-    width: 60px;
-    height: 60px;
-    animation: rotate 20s linear infinite;
+.nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-logo-img {
+    height: 44px;
+    width: auto;
+    border-radius: 6px;
 }
 
 @keyframes rotate {
@@ -1206,9 +1212,8 @@ h1, h2, h3, .serif-display {
     .site-nav {
         padding: 0.75rem 1rem;
     }
-    .seal-logo {
-        width: 36px;
-        height: 36px;
+    .nav-logo-img {
+        height: 32px;
     }
     .nav-mobile-link {
         font-size: 2rem;
