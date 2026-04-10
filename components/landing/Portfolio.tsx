@@ -88,6 +88,75 @@ const projects: Project[] = [
             'https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=1200',
         ],
     },
+    {
+        number: '04',
+        name: 'InsurePipe',
+        subtitle: 'ERP para Agencias de Seguros',
+        shortDescription:
+            'Sistema integral para agencias de seguros. Gestión de pólizas, clientes, siniestros, comisiones y cobranza — todo el pipeline del negocio asegurador.',
+        longDescription:
+            'InsurePipe es un ERP diseñado específicamente para agencias de seguros. Centraliza la gestión de pólizas, el seguimiento de clientes y prospectos, la administración de siniestros, el cálculo de comisiones y la cobranza. Permite a los agentes tener visibilidad completa de su cartera y automatizar procesos que antes se manejaban en hojas de cálculo.',
+        features: [
+            'Gestión completa de pólizas',
+            'Pipeline de clientes y prospectos',
+            'Seguimiento de siniestros',
+            'Cálculo automático de comisiones',
+            'Módulo de cobranza y pagos',
+        ],
+        url: 'https://erp-seguros.artesanosdigitalescom.com.mx/',
+        tags: ['Seguros', 'ERP', 'Finanzas'],
+        images: [
+            'https://images.pexels.com/photos/7821486/pexels-photo-7821486.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '05',
+        name: 'POS La Gran Fruta',
+        subtitle: 'Punto de Venta e Inventario',
+        shortDescription:
+            'Sistema de punto de venta con inventario automatizado, cortes de caja, control de estacionamiento y reportes diarios para comercios.',
+        longDescription:
+            'Un punto de venta completo desarrollado para Frutería La Gran Fruta. Integra ventas en caja, control de inventario automatizado, gestión de estacionamiento, cortes de caja diarios y reportes de ventas. Diseñado para operar de forma rápida y confiable en el día a día de un comercio con alto volumen de transacciones.',
+        features: [
+            'Punto de venta rápido en caja',
+            'Inventario automatizado en tiempo real',
+            'Control de estacionamiento',
+            'Cortes de caja diarios',
+            'Reportes de ventas y productos',
+        ],
+        url: 'https://pos.artesanosdigitalescom.com.mx/login',
+        tags: ['Comercio', 'POS', 'Inventario'],
+        images: [
+            'https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '06',
+        name: 'Jametaro',
+        subtitle: 'Plataforma de Servicios Digitales',
+        shortDescription:
+            'Plataforma web para conectar usuarios con servicios digitales. Catálogo de servicios, solicitudes en línea y seguimiento de pedidos.',
+        longDescription:
+            'Jametaro es una plataforma que conecta a usuarios con proveedores de servicios digitales. Ofrece un catálogo de servicios, permite realizar solicitudes en línea, dar seguimiento a pedidos y gestionar pagos. Una solución pensada para digitalizar la oferta de servicios profesionales y hacerlos accesibles desde cualquier dispositivo.',
+        features: [
+            'Catálogo de servicios en línea',
+            'Solicitudes y cotizaciones digitales',
+            'Seguimiento de pedidos en tiempo real',
+            'Gestión de pagos integrada',
+            'Panel de administración',
+        ],
+        url: 'https://jametaro.artesanosdigitalescom.com.mx/',
+        tags: ['Servicios', 'Marketplace', 'Web'],
+        images: [
+            'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
 ];
 
 interface ProjectModalProps {
