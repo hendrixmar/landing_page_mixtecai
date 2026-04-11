@@ -361,20 +361,57 @@ export default function Portfolio() {
 
     return (
         <section className="portfolio" id="portfolio" ref={ref}>
-            <motion.div
-                className="portfolio-header"
-                initial={{ opacity: 0, x: -80 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ ...slow, delay: 0.1 }}
-            >
-                <span className="eyebrow">Portafolio</span>
-                <h2 className="portfolio-heading serif-display">
-                    Nuestro <i>Trabajo</i>
-                </h2>
-                <p className="portfolio-subtitle">
-                    Productos que construimos junto a nuestros clientes. Cada uno nació de una necesidad real y sigue creciendo con quienes lo usan.
-                </p>
-            </motion.div>
+            <div className="portfolio-top">
+                <motion.div
+                    className="portfolio-header"
+                    initial={{ opacity: 0, x: -80 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ ...slow, delay: 0.1 }}
+                >
+                    <span className="eyebrow">Portafolio</span>
+                    <h2 className="portfolio-heading serif-display">
+                        Nuestro <i>Trabajo</i>
+                    </h2>
+                    <p className="portfolio-subtitle">
+                        Productos que construimos junto a nuestros clientes. Cada uno nació de una necesidad real y sigue creciendo con quienes lo usan.
+                    </p>
+                </motion.div>
+
+                <motion.div
+                    className="portfolio-controls"
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ ...slow, delay: 0.2 }}
+                >
+                    <button
+                        type="button"
+                        className="portfolio-nav"
+                        onClick={prev}
+                        disabled={activeIndex === 0}
+                        aria-label="Proyecto anterior"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M13 4l-6 6 6 6" />
+                        </svg>
+                    </button>
+                    <div className="portfolio-progress">
+                        <span className="portfolio-progress-current">{projects[activeIndex]?.number}</span>
+                        <span className="portfolio-progress-divider">/</span>
+                        <span className="portfolio-progress-total">{projects[projects.length - 1].number}</span>
+                    </div>
+                    <button
+                        type="button"
+                        className="portfolio-nav"
+                        onClick={next}
+                        disabled={activeIndex === projects.length - 1}
+                        aria-label="Proyecto siguiente"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M7 4l6 6-6 6" />
+                        </svg>
+                    </button>
+                </motion.div>
+            </div>
 
             <motion.div
                 className="portfolio-carousel"
@@ -412,45 +449,16 @@ export default function Portfolio() {
                     ))}
                 </div>
 
-                <div className="portfolio-controls">
-                    <button
-                        type="button"
-                        className="portfolio-nav"
-                        onClick={prev}
-                        disabled={activeIndex === 0}
-                        aria-label="Proyecto anterior"
-                    >
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path d="M13 4l-6 6 6 6" />
-                        </svg>
-                    </button>
-                    <div className="portfolio-progress">
-                        <span className="portfolio-progress-current">{projects[activeIndex]?.number}</span>
-                        <span className="portfolio-progress-divider">/</span>
-                        <span className="portfolio-progress-total">{projects[projects.length - 1].number}</span>
-                    </div>
-                    <div className="portfolio-dots">
-                        {projects.map((p, i) => (
-                            <button
-                                key={p.number}
-                                type="button"
-                                className={`portfolio-dot ${i === activeIndex ? 'active' : ''}`}
-                                onClick={() => scrollToIndex(i)}
-                                aria-label={`Ir al proyecto ${p.name}`}
-                            />
-                        ))}
-                    </div>
-                    <button
-                        type="button"
-                        className="portfolio-nav"
-                        onClick={next}
-                        disabled={activeIndex === projects.length - 1}
-                        aria-label="Proyecto siguiente"
-                    >
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path d="M7 4l6 6-6 6" />
-                        </svg>
-                    </button>
+                <div className="portfolio-dots">
+                    {projects.map((p, i) => (
+                        <button
+                            key={p.number}
+                            type="button"
+                            className={`portfolio-dot ${i === activeIndex ? 'active' : ''}`}
+                            onClick={() => scrollToIndex(i)}
+                            aria-label={`Ir al proyecto ${p.name}`}
+                        />
+                    ))}
                 </div>
             </motion.div>
 

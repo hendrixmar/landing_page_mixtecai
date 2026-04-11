@@ -109,16 +109,10 @@ h1, h2, h3, .serif-display {
     opacity: 0.8;
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.nav-logo-img {
-    height: 44px;
-    width: auto;
-    border-radius: 6px;
+.seal-logo {
+    width: 60px;
+    height: 60px;
+    animation: rotate 20s linear infinite;
 }
 
 @keyframes rotate {
@@ -498,21 +492,26 @@ h1, h2, h3, .serif-display {
 .portfolio {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    padding: var(--space-lg) var(--space-md) var(--space-md);
-    min-height: 100vh;
+    padding: var(--space-md) var(--space-md) var(--space-lg);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+}
+
+.portfolio-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .portfolio-header {
-    margin-bottom: var(--space-md);
     max-width: 600px;
 }
 
 .portfolio-heading {
-    font-size: clamp(3rem, 6vw, 6rem);
-    margin-bottom: var(--space-sm);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    margin-bottom: 0.5rem;
 }
 
 .portfolio-subtitle {
@@ -558,7 +557,7 @@ h1, h2, h3, .serif-display {
 
 .portfolio-card-image {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
     background: #111;
 }
@@ -606,30 +605,34 @@ h1, h2, h3, .serif-display {
 
 .portfolio-card-body {
     flex-grow: 1;
-    padding: var(--space-sm) var(--space-sm) 0.5rem;
+    padding: 1rem 1rem 0.25rem;
 }
 
 .portfolio-name {
-    font-size: clamp(2rem, 2.4vw, 2.8rem);
-    margin-bottom: 0.3rem;
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
+    margin-bottom: 0.25rem;
     line-height: 1;
 }
 
 .portfolio-subtitle-text {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent-green);
     display: block;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.5rem;
 }
 
 .portfolio-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
     opacity: 0.6;
     max-width: 95%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .portfolio-card-footer {
@@ -644,10 +647,8 @@ h1, h2, h3, .serif-display {
 .portfolio-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--space-sm);
-    padding: 0 var(--space-md);
-    margin-top: var(--space-sm);
+    gap: 0.75rem;
+    flex-shrink: 0;
 }
 
 .portfolio-nav {
@@ -695,6 +696,8 @@ h1, h2, h3, .serif-display {
 .portfolio-dots {
     display: flex;
     gap: 0.5rem;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-md) 0;
 }
 .portfolio-dot {
     width: 8px;
@@ -1315,8 +1318,9 @@ h1, h2, h3, .serif-display {
     .site-nav {
         padding: 0.75rem 1rem;
     }
-    .nav-logo-img {
-        height: 32px;
+    .seal-logo {
+        width: 36px;
+        height: 36px;
     }
     .nav-mobile-link {
         font-size: 2rem;

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import SealLogo from './SealLogo';
+
 const links = [
     { href: '#ethos', label: 'Ethos' },
     { href: '#services', label: 'Servicios' },
@@ -21,9 +23,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="site-nav">
-                <a href="#hero" className="nav-logo">
-                    <img src="/logo-ad.jpg" alt="Artesanos Digitales" className="nav-logo-img" />
-                </a>
+                <SealLogo />
                 {/* Desktop links */}
                 <div className="nav-links nav-desktop">
                     {links.map((l) => (
