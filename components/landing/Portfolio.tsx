@@ -156,6 +156,29 @@ const projects: Project[] = [
             '/portfolio/jametaro/storefront.jpg',
         ],
     },
+    {
+        number: '07',
+        name: 'Reyna Roja',
+        subtitle: 'Sitio Web para Restaurante Mar y Tierra en Veracruz',
+        shortDescription:
+            'Sitio web elegante para Reyna Roja, restaurante mar y tierra en Veracruz. Identidad de marca refinada, menú visual y reservaciones.',
+        longDescription:
+            'Reyna Roja es un restaurante mar y tierra ubicado en Veracruz que combina mariscos frescos con cortes a la parrilla. Desarrollamos su sitio web con una identidad visual elegante en tonos rojo profundo y dorado, tipografía editorial, presentación del menú, galería del restaurante y enlaces directos para reservación — diseñado para reflejar la sofisticación de la experiencia gastronómica.',
+        features: [
+            'Diseño editorial elegante',
+            'Identidad de marca refinada',
+            'Menú visual destacado',
+            'Galería del restaurante',
+            'Optimizado para móviles',
+        ],
+        url: 'https://reynaroja.artesanosdigitalescom.com.mx/',
+        tags: ['Restaurante', 'Mar y Tierra', 'Web'],
+        images: [
+            '/portfolio/reyna-roja/hero-dish.jpg',
+            '/portfolio/reyna-roja/restaurant_bar.png',
+            '/portfolio/reyna-roja/restaurant_table.png',
+        ],
+    },
 ];
 
 interface ProjectModalProps {
