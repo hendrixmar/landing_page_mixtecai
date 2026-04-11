@@ -313,8 +313,51 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
 
 export default function Portfolio() {
     const ref = useRef<HTMLElement>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
     const inView = useInView(ref, { once: true, amount: 0.15 });
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const track = trackRef.current;
+        if (!track) return;
+        const handleScroll = () => {
+            const cards = track.querySelectorAll<HTMLElement>('.portfolio-card');
+            if (!cards.length) return;
+            const trackRect = track.getBoundingClientRect();
+            const trackCenter = trackRect.left + trackRect.width / 2;
+            let closest = 0;
+            let minDist = Infinity;
+            cards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const center = rect.left + rect.width / 2;
+                const dist = Math.abs(center - trackCenter);
+                if (dist < minDist) {
+                    minDist = dist;
+                    closest = i;
+                }
+            });
+            setActiveIndex(closest);
+        };
+        track.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => track.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToIndex = (index: number) => {
+        const track = trackRef.current;
+        if (!track) return;
+        const cards = track.querySelectorAll<HTMLElement>('.portfolio-card');
+        const target = cards[index];
+        if (!target) return;
+        const trackRect = track.getBoundingClientRect();
+        const cardRect = target.getBoundingClientRect();
+        const delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+        track.scrollBy({ left: delta, behavior: 'smooth' });
+    };
+
+    const prev = () => scrollToIndex(Math.max(0, activeIndex - 1));
+    const next = () => scrollToIndex(Math.min(projects.length - 1, activeIndex + 1));
 
     return (
         <section className="portfolio" id="portfolio" ref={ref}>
@@ -332,37 +375,85 @@ export default function Portfolio() {
                     Productos que construimos junto a nuestros clientes. Cada uno nació de una necesidad real y sigue creciendo con quienes lo usan.
                 </p>
             </motion.div>
-            <div className="portfolio-grid">
-                {projects.map((project, i) => (
-                    <motion.button
-                        type="button"
-                        onClick={() => setSelectedProject(project)}
-                        className="portfolio-card portfolio-card-button"
-                        key={project.number}
-                        initial={{ opacity: 0, y: 80 + i * 20, scale: 0.9 }}
-                        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                        transition={{ ...slow, delay: 0.3 + i * 0.25 }}
-                    >
-                        <div className="portfolio-card-top">
-                            <span className="portfolio-number">{project.number}</span>
-                            <div className="portfolio-tags">
-                                {project.tags.map((tag) => (
-                                    <span className="portfolio-tag" key={tag}>{tag}</span>
-                                ))}
+
+            <motion.div
+                className="portfolio-carousel"
+                initial={{ opacity: 0, y: 40 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ ...slow, delay: 0.3 }}
+            >
+                <div className="portfolio-track" ref={trackRef}>
+                    {projects.map((project) => (
+                        <button
+                            type="button"
+                            onClick={() => setSelectedProject(project)}
+                            className="portfolio-card portfolio-card-button"
+                            key={project.number}
+                        >
+                            <div className="portfolio-card-image">
+                                <img src={project.images[0]} alt={project.name} loading="lazy" />
+                                <span className="portfolio-card-number">{project.number}</span>
                             </div>
-                        </div>
-                        <div className="portfolio-card-body">
-                            <h3 className="portfolio-name serif-display">{project.name}</h3>
-                            <span className="portfolio-subtitle-text">{project.subtitle}</span>
-                            <p className="portfolio-desc">{project.shortDescription}</p>
-                        </div>
-                        <div className="portfolio-card-footer">
-                            <span className="portfolio-link">Ver Detalles</span>
-                            <span className="portfolio-arrow">&rarr;</span>
-                        </div>
-                    </motion.button>
-                ))}
-            </div>
+                            <div className="portfolio-card-body">
+                                <div className="portfolio-tags">
+                                    {project.tags.map((tag) => (
+                                        <span className="portfolio-tag" key={tag}>{tag}</span>
+                                    ))}
+                                </div>
+                                <h3 className="portfolio-name serif-display">{project.name}</h3>
+                                <span className="portfolio-subtitle-text">{project.subtitle}</span>
+                                <p className="portfolio-desc">{project.shortDescription}</p>
+                            </div>
+                            <div className="portfolio-card-footer">
+                                <span className="portfolio-link">Ver Detalles</span>
+                                <span className="portfolio-arrow">&rarr;</span>
+                            </div>
+                        </button>
+                    ))}
+                </div>
+
+                <div className="portfolio-controls">
+                    <button
+                        type="button"
+                        className="portfolio-nav"
+                        onClick={prev}
+                        disabled={activeIndex === 0}
+                        aria-label="Proyecto anterior"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M13 4l-6 6 6 6" />
+                        </svg>
+                    </button>
+                    <div className="portfolio-progress">
+                        <span className="portfolio-progress-current">{projects[activeIndex]?.number}</span>
+                        <span className="portfolio-progress-divider">/</span>
+                        <span className="portfolio-progress-total">{projects[projects.length - 1].number}</span>
+                    </div>
+                    <div className="portfolio-dots">
+                        {projects.map((p, i) => (
+                            <button
+                                key={p.number}
+                                type="button"
+                                className={`portfolio-dot ${i === activeIndex ? 'active' : ''}`}
+                                onClick={() => scrollToIndex(i)}
+                                aria-label={`Ir al proyecto ${p.name}`}
+                            />
+                        ))}
+                    </div>
+                    <button
+                        type="button"
+                        className="portfolio-nav"
+                        onClick={next}
+                        disabled={activeIndex === projects.length - 1}
+                        aria-label="Proyecto siguiente"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M7 4l6 6-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            </motion.div>
+
             <ScrollArrow to="testimonials" light />
 
             <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
