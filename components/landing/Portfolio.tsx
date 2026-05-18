@@ -179,6 +179,121 @@ const projects: Project[] = [
             '/portfolio/reyna-roja/restaurant_table.png',
         ],
     },
+    {
+        number: '08',
+        name: 'BMS',
+        subtitle: 'Business Management System',
+        shortDescription:
+            'Plataforma de gestión empresarial para pequeñas y medianas empresas. Operación, finanzas, clientes y reportes ejecutivos — todo el negocio en un solo panel.',
+        longDescription:
+            'BMS es un sistema integral de gestión empresarial diseñado para PyMEs que necesitan visibilidad completa de su operación. Centraliza la gestión de clientes, finanzas, inventario, reportes y flujos operativos. Construido como una plataforma modular que crece con el negocio, conectando equipos administrativos, operativos y directivos en un mismo entorno.',
+        features: [
+            'Gestión de clientes y operaciones',
+            'Módulos de finanzas y reportes',
+            'Panel ejecutivo con KPIs',
+            'API REST para integraciones',
+            'Roles y permisos granulares',
+        ],
+        url: 'https://bms.artesanosdigitalescom.com.mx/',
+        tags: ['ERP', 'Gestión', 'PyME'],
+        images: [
+            'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '09',
+        name: 'Municipality OS',
+        subtitle: 'Plataforma Digital para Municipios',
+        shortDescription:
+            'Sistema integral para gobiernos municipales. Trámites ciudadanos, gestión interna, transparencia y servicios públicos digitalizados.',
+        longDescription:
+            'Municipality OS es una plataforma diseñada para modernizar la administración municipal. Permite a los gobiernos locales digitalizar trámites ciudadanos, gestionar áreas internas, publicar información de transparencia y operar servicios públicos desde una sola herramienta. Reduce filas, agiliza procesos y mejora la relación entre ciudadanos y autoridades.',
+        features: [
+            'Portal de trámites ciudadanos',
+            'Gestión interna de áreas y personal',
+            'Transparencia y datos abiertos',
+            'Reportes y seguimiento de servicios',
+            'Notificaciones a residentes',
+        ],
+        url: 'https://municipality-os.artesanosdigitalescom.com.mx/',
+        tags: ['Gobierno', 'GovTech', 'Ciudadanos'],
+        images: [
+            'https://images.pexels.com/photos/2422259/pexels-photo-2422259.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '10',
+        name: 'Evolucione',
+        subtitle: 'Plataforma de Crecimiento y Desarrollo',
+        shortDescription:
+            'Herramienta digital para acompañar procesos de crecimiento, desarrollo personal y profesional. Seguimiento, métricas y planes de acción.',
+        longDescription:
+            'Evolucione es una plataforma pensada para acompañar procesos de desarrollo y crecimiento — sea para individuos, equipos u organizaciones. Permite definir objetivos, dar seguimiento al progreso, medir resultados y construir planes de acción concretos. Combina coaching estructurado con tecnología para que la transformación deje de ser una intención y se convierta en una práctica medible.',
+        features: [
+            'Definición y seguimiento de objetivos',
+            'Métricas de progreso personalizadas',
+            'Planes de acción y recordatorios',
+            'Reportes de evolución temporal',
+            'Vista para individuos y equipos',
+        ],
+        url: 'https://evolucione.artesanosdigitalescom.com.mx/',
+        tags: ['Desarrollo', 'Coaching', 'Productividad'],
+        images: [
+            'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '11',
+        name: 'Food Sensei',
+        subtitle: 'Asistente Inteligente de Cocina',
+        shortDescription:
+            'Plataforma asistida por IA para descubrir recetas, planificar menús y optimizar la operación de cocina con búsqueda semántica e inventario.',
+        longDescription:
+            'Food Sensei combina inteligencia artificial con la operación de cocina cotidiana. Permite descubrir recetas mediante búsqueda semántica, planificar menús según ingredientes disponibles, optimizar el inventario y dar sugerencias contextuales a cocineros profesionales y hogares. Apoyado por una base de datos vectorial para entender el lenguaje culinario más allá de palabras clave.',
+        features: [
+            'Búsqueda semántica de recetas',
+            'Planificación inteligente de menús',
+            'Sugerencias por inventario disponible',
+            'Base de datos vectorial (Qdrant)',
+            'Interfaz conversacional con IA',
+        ],
+        url: 'https://food-sensei.artesanosdigitalescom.com.mx/',
+        tags: ['IA', 'Gastronomía', 'Búsqueda Semántica'],
+        images: [
+            'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
+    {
+        number: '12',
+        name: 'Glassworks',
+        subtitle: 'CRM para Empresas de Vidrio y Aluminio',
+        shortDescription:
+            'Sistema de gestión de cotizaciones, proyectos y clientes para empresas de fabricación e instalación de vidrio y aluminio.',
+        longDescription:
+            'Glassworks es un CRM especializado para empresas de fabricación e instalación de vidrio, aluminio y carpintería. Centraliza cotizaciones, órdenes de fabricación, seguimiento de proyectos, gestión de clientes e instaladores, y reportes financieros. Diseñado para reemplazar hojas de cálculo y mensajes sueltos por un flujo único que va desde el primer contacto del cliente hasta la entrega final.',
+        features: [
+            'Cotizaciones detalladas por proyecto',
+            'Gestión de órdenes de fabricación',
+            'Seguimiento de instalaciones',
+            'Pipeline de clientes y prospectos',
+            'Reportes financieros y de obra',
+        ],
+        url: 'https://glassworks.artesanosdigitalescom.com.mx/',
+        tags: ['CRM', 'Manufactura', 'Construcción'],
+        images: [
+            'https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/1216544/pexels-photo-1216544.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        ],
+    },
 ];
 
 interface ProjectModalProps {
