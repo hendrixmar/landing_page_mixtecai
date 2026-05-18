@@ -228,24 +228,24 @@ const projects: Project[] = [
     {
         number: '10',
         name: 'Evolucione',
-        subtitle: 'Plataforma de Crecimiento y Desarrollo',
+        subtitle: 'Plataforma de Lectura Rápida',
         shortDescription:
-            'Herramienta digital para acompañar procesos de crecimiento, desarrollo personal y profesional. Seguimiento, métricas y planes de acción.',
+            'Entrenamiento de lectura rápida online. Ejercicios guiados, métricas de palabras por minuto, comprensión y progreso medible sesión tras sesión.',
         longDescription:
-            'Evolucione es una plataforma pensada para acompañar procesos de desarrollo y crecimiento — sea para individuos, equipos u organizaciones. Permite definir objetivos, dar seguimiento al progreso, medir resultados y construir planes de acción concretos. Combina coaching estructurado con tecnología para que la transformación deje de ser una intención y se convierta en una práctica medible.',
+            'Evolucione es una plataforma para entrenar lectura rápida de forma estructurada. Combina ejercicios visuales, pruebas de comprensión y métricas de palabras por minuto para que cada usuario pueda ver — y comparar — su evolución a lo largo del tiempo. Diseñada para estudiantes, profesionistas y cualquier persona que quiera leer más en menos tiempo sin sacrificar comprensión.',
         features: [
-            'Definición y seguimiento de objetivos',
-            'Métricas de progreso personalizadas',
-            'Planes de acción y recordatorios',
-            'Reportes de evolución temporal',
-            'Vista para individuos y equipos',
+            'Ejercicios guiados de lectura rápida',
+            'Medición de WPM (palabras por minuto)',
+            'Pruebas de comprensión lectora',
+            'Historial de progreso por sesión',
+            'Niveles y rutinas progresivas',
         ],
         url: 'https://evolucione.artesanosdigitalescom.com.mx/',
-        tags: ['Desarrollo', 'Coaching', 'Productividad'],
+        tags: ['Educación', 'Lectura Rápida', 'Productividad'],
         images: [
-            'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1200',
-            'https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1200',
-            'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1200',
+            'https://images.pexels.com/photos/261909/pexels-photo-261909.jpeg?auto=compress&cs=tinysrgb&w=1200',
         ],
     },
     {
